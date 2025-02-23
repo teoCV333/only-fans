@@ -1,0 +1,92 @@
+<div
+    class="absolute h-screen inset-0 items-center p-4 bg-white/90 backdrop-opacity-60  lg:backdrop-opacity/30 lg:flex lg:w-screen lg:justify-center">
+    <div class="flex-row bg-white rounded-lg lg:flex-col lg:h-full border-1 border-[#8a96a340]">
+        <div class="inline-flex py-2 px-4 font-semibold space-x-5 lg:w-full">
+            <a (click)="modalService.toggleModal()" class="flex items-center justify-center">
+                <i class="fa fa-arrow-left text-lg leading-6 "></i>
+            </a>
+            <h4 class="font-bold text-lg">INICIAR SESIÓN PARA SUSCRIBIRSE</h4>
+        </div>
+        <div class="md:flex">
+            <div class="md:w-1/2 px-4 md:flex-col lg:flex-col">
+                <div class="h-20 rounded-t-lg bg-[url(/assets/header.jpg)] bg-cover bg-center md:h-50 px-1">
+                </div>
+                <div class="bg-white p-4 shadow rounded-lg">
+                    <div class="flex relative items-center mb-15">
+                        <img alt="Profile picture of Elizabeth Dream"
+                            class="w-25 h-25 -top-15 border rounded-full mr-3 absolute text-white"
+                            src="/assets/avatar.jpg" />
+                        <div class="absolute -top-2 -right-2">
+                            <div class="flex items-center ">
+                                <span class="font-bold text-sm text-black">
+                                    Elizabeth
+                                </span>
+                                <i class=" fas fa-moon ml-2 text-yellow-500">
+                                </i>
+                                <i class="fas fa-check-circle ml-2 text-black">
+                                </i>
+                            </div>
+                            <span class="text-sm text-gray-500">
+                                {{"@elizabeth_dreamm"}}
+                            </span>
+                        </div>
+                    </div>
+                    <div class="flex-row">
+                        <div>
+                            <h2 class="font-semibold text-[#8a96a3]">SUSCRIBETE Y OBTEN ESTAS VENTAJAS:</h2>
+                        </div>
+                        <div>
+                            <li class="flex space-x-2 h-fit items-center py-2">
+                                <i class="fa fa-check text-blue-400 text-2xl"></i>
+                                <span class="text-md text-start">Acceso total al contenido de este usuario</span>
+                            </li>
+                            <li class="flex space-x-2 items-center py-2">
+                                <i class="fa fa-check text-blue-400 text-2xl"></i>
+                                <span class="text-md">Mensaje directo con este usuario</span>
+                            </li>
+                            <li class="flex space-x-2 items-center py-2">
+                                <i class="fa fa-check text-blue-400 text-2xl"></i>
+                                <span class="text-md">Cancelar su suscripción en cualquier momento</span>
+                            </li>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="w-full p-4 md:w-1/2 lg:w-1/2">
+                <span class=" font-semibold">iniciar sesión</span>
+                <div class="flex mt-2">
+                    <form action="" class="py-2 space-y-6 w-full">
+                        <div class="h-1/4 border border-[#8a96a3] rounded-sm justify-center items-center">
+                            <input class="px-3 h-full items-center md:w-full" type="email" placeholder="Correo">
+                        </div>
+                        <div class="h-1/4 border border-[#8a96a3] rounded-sm justify-center items-center">
+                            <input class="px-3 h-full items-center md:w-full" type=" password" placeholder="Contraseña">
+                        </div>
+                        <div>
+                            <button
+                                class="w-full text-white font-semibold text-sm px-4 py-2 rounded-full mb-2 bg-[#00aff0] hover:bg-[#0091ea] cursor-pointer">
+                                INICIAR SESIÓN
+                            </button>
+                        </div>
+                    </form>
+                </div>
+                <div class="py-2 justify-center">
+                    <small>
+                        Al iniciar sesión y usar OnlyFans, aceptas nuestros <span class="text-blue-400">Términos de
+                            servicio</span> y <span class="text-blue-400">Políticas de
+                            privacidad</span>,
+                        y confirmas que tienes al menos 18 años.
+                    </small>
+                </div>
+                <div>
+                    <li class="list-none text-center">
+                        <a class="text-sm text-blue-500" href="">¿Has olvidado la contraseña?</a>
+                    </li>
+                    <li class="list-none text-center">
+                        <a class="text-sm text-blue-500" href="">Registrate para OnlyFans</a>
+                    </li>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

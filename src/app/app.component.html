@@ -1,0 +1,128 @@
+<div class="flex-row h-screen md:flex md:w-screen">
+    <!-- Sidebar -->
+    <div class="hidden md:flex flex-col items-start px-8 py-6 space-y-5 bg-white">
+        <!-- Profile Icon -->
+        <div class="flex items-center space-x-2 px-3">
+            <div class="w-8 h-8 bg-gray-200 rounded-full flex items-center justify-center">
+                <span class="text-blue-500 font-bold text-sm">MC</span>
+            </div>
+        </div>
+
+        <!-- Navigation Links -->
+        <div class="flex flex-col space-y-4 text-gray-500 font-semibold">
+            @for(option of menuOptions; track $index) {
+            <a href="#"
+                class="flex items-center text-[#8a96a3] space-x-4 hover:bg-[#f0f9fe] hover:text-[#0091ea] rounded-full pl-3 pr-10">
+                <div class="flex flex-col w-10 h-10 items-center justify-center">
+                    <i class="text-2xl" [ngClass]="option.icon"></i>
+                </div>
+                <span class="text-xl">{{option.title}}</span>
+            </a>
+            }
+        </div>
+
+        <!-- New Post Button -->
+        <!--  <button
+            class="flex items-center justify-between space-x-4 bg-[#00aff0] hover:bg-[#0091ea] text-white px-9 py-3 rounded-full cursor-pointer">
+            <i class="fas fa-plus"></i>
+            <span class="text-nowrap">NUEVA PUBLICACIÓN</span>
+        </button> -->
+    </div>
+    <!-- Main Content -->
+    <div class="w-full md:w-5/6 overflow-y-scroll scrollbar-hidden border-x-1 border-[#8a96a340]">
+        <div class="h-40 bg-[url(/assets/header.jpg)] bg-cover bg-center md:h-50 px-1">
+            <div class="flex justify-between items-start mb-4">
+                <div class="flex items-center">
+                    <i class="fas fa-arrow-left py-4 px-2 text-xl ml-2 text-white">
+                    </i>
+                    <span class="font-bold text-white ml-3 text-xl">
+                        Elizabeth Dream
+                    </span>
+                    <i class="fas fa-moon ml-2 text-yellow-500">
+                    </i>
+                    <i class="fas fa-check-circle ml-2 text-white">
+                    </i>
+                </div>
+                <div class=" flex items-center p-4 text-xl">
+                    <i class="fas fa-ellipsis-v text-gray-500 text-white">
+                    </i>
+                </div>
+            </div>
+        </div>
+        <div class="bg-white p-4 shadow relative">
+            <div class="flex items-center mb-2">
+                <img alt="Profile picture of Elizabeth Dream"
+                    class="w-25 h-25 -top-10 border rounded-full mr-3 absolute text-white" src="/assets/avatar.jpg" />
+                <div>
+                    <div class="flex items-center mt-12">
+                        <span class="font-semibold text-black text-xl">
+                            Elizabeth Dream
+                        </span>
+                        <i class=" fas fa-moon ml-2 text-yellow-500">
+                        </i>
+                        <i class="fas fa-check-circle ml-2 text-black">
+                        </i>
+                    </div>
+                    <span class="text-sm text-gray-500">
+                        {{"@elizabeth_dreamm"}} - Disponible ahora
+                    </span>
+                </div>
+            </div>
+            <p class="text-black mb-4">
+                There’s nothing more attractive than a heart that loves deeply and a soul that shines brightly. Keep
+                being you. 👋💖
+            </p>
+        </div>
+        <div class="bg-white p-4 shadow mt-3">
+            <h2 class="text-[#8a96a3] font-semibold mb-2">
+                SUSCRIPCIÓN
+            </h2>
+            <button (click)="modalService.toggleModal()"
+                class="flex justify-between w-full text-white px-5 py-3 rounded-full mb-2 bg-[#00aff0] hover:bg-[#0091ea] cursor-pointer">
+                <span>SUSCRÍBETE</span> <span>GRATIS</span>
+            </button>
+        </div>
+        <div (click)="changeSection(1)"
+            class="w-1/2 justify-center mt-3 items-center bg-white cursor-pointer inline-flex p-2"
+            [ngClass]="{'border-b-2 border-[#242529]': activeSection() === 1}">
+            <div class="text-center">
+                <span>723 PUBLICACIONES</span>
+            </div>
+        </div>
+        <div (click)="changeSection(2)"
+            class="w-1/2  justify-center mt-3 items-center bg-white cursor-pointer inline-flex p-2"
+            [ngClass]="{'border-b-2 border-[#242529]': activeSection() === 2}">
+            <div class="text-center">
+                <span>723 MEDIOS</span>
+            </div>
+        </div>
+        <div class="flex h-max w-full items-center justify-center bg-[url(/assets/lockedbg.png)] bg-cover p-33">
+            <i class="fa fa-lock text-[4rem] text-[#dbdfe3]"></i>
+        </div>
+    </div>
+    <!-- Right Sidebar -->
+    <div class="s:hidden lg:flex-col lg: w-1/2 md:flex-col md:w-1/2 px-9 py-4 bg-white">
+
+        <div class="bg-white p-4 rounded-lg shadow">
+            <h2 class="text-[#8a96a3] font-bold mb-2">
+                SUSCRIPCIÓN
+            </h2>
+            <button (click)="modalService.toggleModal()"
+                class="flex justify-between w-full text-white font-semibold text-sm px-4 py-2 rounded-full mb-2 bg-[#00aff0] hover:bg-[#0091ea] cursor-pointer">
+                <span>SUSCRÍBETE</span> <span>GRATIS</span>
+            </button>
+        </div>
+        <div class="mt-4 text-gray-500 text-sm flex justify-center border-t-1 border-[#8a96a340]">
+            <a class="block mb-1 p-2" href="#">
+                Privacy
+            </a>
+            <a class="block mb-1 p-2" href="#">
+                Cookie Notice
+            </a>
+            <a class="block p-2" href="#">
+                Terms of Service
+            </a>
+        </div>
+    </div>
+    <app-modal *ngIf="modalService.showModal()" />
+</div>
