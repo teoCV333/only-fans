@@ -1,4 +1,4 @@
-<div class="flex-row h-screen md:flex md:w-screen">
+<div class="flex-row h-screen md:flex md:w-screen lg:w-screen">
     <!-- Sidebar -->
     <div class="hidden md:flex flex-col items-start px-8 py-6 space-y-5 bg-white">
         <!-- Profile Icon -->
@@ -12,7 +12,7 @@
         <div class="flex flex-col space-y-4 text-gray-500 font-semibold">
             @for(option of menuOptions; track $index) {
             <a href="#"
-                class="flex items-center text-[#8a96a3] space-x-4 hover:bg-[#f0f9fe] hover:text-[#0091ea] rounded-full pl-3 pr-10">
+                class="flex items-center text-[#8a96a3] space-x-4 hover:bg-[#f0f9fe] hover:text-[#0091ea] rounded-full pl-3 pr-10 transition duration-300 ease-in-out">
                 <div class="flex flex-col w-10 h-10 items-center justify-center">
                     <i class="text-2xl" [ngClass]="option.icon"></i>
                 </div>
@@ -29,8 +29,8 @@
         </button> -->
     </div>
     <!-- Main Content -->
-    <div class="w-full md:w-5/6 overflow-y-scroll scrollbar-hidden border-x-1 border-[#8a96a340]">
-        <div class="h-40 bg-[url(/assets/header.jpg)] bg-cover bg-center md:h-50 px-1">
+    <div class="w-full md:w-5/6 lg:w-2/5 overflow-y-scroll scrollbar-hidden border-x-1 border-[#8a96a340]">
+        <div class="h-25 bg-[url(/assets/header.jpg)] bg-cover bg-center md:h-50 px-1">
             <div class="flex justify-between items-start mb-4">
                 <div class="flex items-center">
                     <i class="fas fa-arrow-left py-4 px-2 text-xl ml-2 text-white">
@@ -78,7 +78,7 @@
                 SUSCRIPCIÓN
             </h2>
             <button (click)="modalService.toggleModal()"
-                class="flex justify-between w-full text-white px-5 py-3 rounded-full mb-2 bg-[#00aff0] hover:bg-[#0091ea] cursor-pointer">
+                class="flex justify-between w-full text-white px-5 py-3 rounded-full mb-2 bg-[#00aff0] hover:bg-[#0091ea] cursor-pointer transition duration-300 ease-in-out">
                 <span>SUSCRÍBETE</span> <span>GRATIS</span>
             </button>
         </div>
@@ -86,29 +86,46 @@
             class="w-1/2 justify-center mt-3 items-center bg-white cursor-pointer inline-flex p-2"
             [ngClass]="{'border-b-2 border-[#242529]': activeSection() === 1}">
             <div class="text-center">
-                <span>723 PUBLICACIONES</span>
+                <span class="text-sm">723 PUBLICACIONES</span>
             </div>
         </div>
         <div (click)="changeSection(2)"
             class="w-1/2  justify-center mt-3 items-center bg-white cursor-pointer inline-flex p-2"
             [ngClass]="{'border-b-2 border-[#242529]': activeSection() === 2}">
             <div class="text-center">
-                <span>723 MEDIOS</span>
+                <span class="text-sm">723 MEDIOS</span>
             </div>
         </div>
-        <div class="flex h-max w-full items-center justify-center bg-[url(/assets/lockedbg.png)] bg-cover p-33">
-            <i class="fa fa-lock text-[4rem] text-[#dbdfe3]"></i>
+        <div
+            class="flex relative md:px-25 py-5 mb-4 h-full items-center justify-center bg-[url(/assets/lockedbg.png)] bg-cover lg:p-33">
+            <i class="fa fa-lock text-[4rem] text-[#dbdfe3] p-15"></i>
+            <div class="absolute mx-4 px-4 bottom-1 py-1 border-1 border-[#8a96a340] rounded-md">
+                <div class="inline-flex space-x-2 mb-2 text-[#8a96a3]">
+                    <li>
+                        <a class="p-1 space-x-1 "> <i class="fa fa-table-list"></i> <small>724 -</small></a>
+                    </li>
+                    <li>
+                        <a class="p-1 space-x-1"> <i class="fa fa-image"> </i> <small>713 -</small></a>
+                    </li>
+                    <li>
+                        <a class="p-1 space-x-1"> <i class="fa fa-video"></i> <small>11</small></a>
+                    </li>
+                </div>
+                <button (click)="modalService.toggleModal()"
+                    class="w-full text-white font-semibold text-sm px-4 py-2 rounded-full mb-2 bg-[#00aff0] hover:bg-[#0091ea] cursor-pointer transition duration-300 ease-in-out">
+                    SUSCRÍBETE PARA VER LAS PUBLICACIONES DEL USUARIO
+                </button>
+            </div>
         </div>
     </div>
     <!-- Right Sidebar -->
-    <div class="s:hidden lg:flex-col lg: w-1/2 md:flex-col md:w-1/2 px-9 py-4 bg-white">
-
+    <div class="hidden px-9 py-4 bg-white md:flex md:w-1/2 lg:flex-col lg:w-1/2">
         <div class="bg-white p-4 rounded-lg shadow">
             <h2 class="text-[#8a96a3] font-bold mb-2">
                 SUSCRIPCIÓN
             </h2>
             <button (click)="modalService.toggleModal()"
-                class="flex justify-between w-full text-white font-semibold text-sm px-4 py-2 rounded-full mb-2 bg-[#00aff0] hover:bg-[#0091ea] cursor-pointer">
+                class="flex justify-between w-full text-white font-semibold text-sm px-4 py-2 rounded-full mb-2 bg-[#00aff0] hover:bg-[#0091ea] cursor-pointer transition duration-300 ease-in-out">
                 <span>SUSCRÍBETE</span> <span>GRATIS</span>
             </button>
         </div>
@@ -124,5 +141,5 @@
             </a>
         </div>
     </div>
-    <app-modal *ngIf="modalService.showModal()" />
+    <app-modal class="transition duration-300 ease" *ngIf="modalService.showModal()" />
 </div>

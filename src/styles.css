@@ -8,3 +8,7 @@
 .scrollbar-hidden {
     scrollbar-width: none;
 }
+
+li {
+    list-style: none;
+}
