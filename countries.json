@@ -1,0 +1,1018 @@
+[
+  {
+    "name": "AD",
+    "flag": "/assets/ad.svg"
+  },
+  {
+    "name": "AE",
+    "flag": "/assets/ae.svg"
+  },
+  {
+    "name": "AF",
+    "flag": "/assets/af.svg"
+  },
+  {
+    "name": "AG",
+    "flag": "/assets/ag.svg"
+  },
+  {
+    "name": "AI",
+    "flag": "/assets/ai.svg"
+  },
+  {
+    "name": "AL",
+    "flag": "/assets/al.svg"
+  },
+  {
+    "name": "AM",
+    "flag": "/assets/am.svg"
+  },
+  {
+    "name": "AO",
+    "flag": "/assets/ao.svg"
+  },
+  {
+    "name": "AQ",
+    "flag": "/assets/aq.svg"
+  },
+  {
+    "name": "AR",
+    "flag": "/assets/ar.svg"
+  },
+  {
+    "name": "AS",
+    "flag": "/assets/as.svg"
+  },
+  {
+    "name": "AT",
+    "flag": "/assets/at.svg"
+  },
+  {
+    "name": "AU",
+    "flag": "/assets/au.svg"
+  },
+  {
+    "name": "AW",
+    "flag": "/assets/aw.svg"
+  },
+  {
+    "name": "AX",
+    "flag": "/assets/ax.svg"
+  },
+  {
+    "name": "AZ",
+    "flag": "/assets/az.svg"
+  },
+  {
+    "name": "BA",
+    "flag": "/assets/ba.svg"
+  },
+  {
+    "name": "BB",
+    "flag": "/assets/bb.svg"
+  },
+  {
+    "name": "BD",
+    "flag": "/assets/bd.svg"
+  },
+  {
+    "name": "BE",
+    "flag": "/assets/be.svg"
+  },
+  {
+    "name": "BF",
+    "flag": "/assets/bf.svg"
+  },
+  {
+    "name": "BG",
+    "flag": "/assets/bg.svg"
+  },
+  {
+    "name": "BH",
+    "flag": "/assets/bh.svg"
+  },
+  {
+    "name": "BI",
+    "flag": "/assets/bi.svg"
+  },
+  {
+    "name": "BJ",
+    "flag": "/assets/bj.svg"
+  },
+  {
+    "name": "BL",
+    "flag": "/assets/bl.svg"
+  },
+  {
+    "name": "BM",
+    "flag": "/assets/bm.svg"
+  },
+  {
+    "name": "BN",
+    "flag": "/assets/bn.svg"
+  },
+  {
+    "name": "BO",
+    "flag": "/assets/bo.svg"
+  },
+  {
+    "name": "BQ",
+    "flag": "/assets/bq.svg"
+  },
+  {
+    "name": "BR",
+    "flag": "/assets/br.svg"
+  },
+  {
+    "name": "BS",
+    "flag": "/assets/bs.svg"
+  },
+  {
+    "name": "BT",
+    "flag": "/assets/bt.svg"
+  },
+  {
+    "name": "BV",
+    "flag": "/assets/bv.svg"
+  },
+  {
+    "name": "BW",
+    "flag": "/assets/bw.svg"
+  },
+  {
+    "name": "BY",
+    "flag": "/assets/by.svg"
+  },
+  {
+    "name": "BZ",
+    "flag": "/assets/bz.svg"
+  },
+  {
+    "name": "CA",
+    "flag": "/assets/ca.svg"
+  },
+  {
+    "name": "CC",
+    "flag": "/assets/cc.svg"
+  },
+  {
+    "name": "CD",
+    "flag": "/assets/cd.svg"
+  },
+  {
+    "name": "CF",
+    "flag": "/assets/cf.svg"
+  },
+  {
+    "name": "CG",
+    "flag": "/assets/cg.svg"
+  },
+  {
+    "name": "CH",
+    "flag": "/assets/ch.svg"
+  },
+  {
+    "name": "CI",
+    "flag": "/assets/ci.svg"
+  },
+  {
+    "name": "CK",
+    "flag": "/assets/ck.svg"
+  },
+  {
+    "name": "CL",
+    "flag": "/assets/cl.svg"
+  },
+  {
+    "name": "CM",
+    "flag": "/assets/cm.svg"
+  },
+  {
+    "name": "CN",
+    "flag": "/assets/cn.svg"
+  },
+  {
+    "name": "CO",
+    "flag": "/assets/co.svg"
+  },
+  {
+    "name": "CR",
+    "flag": "/assets/cr.svg"
+  },
+  {
+    "name": "CU",
+    "flag": "/assets/cu.svg"
+  },
+  {
+    "name": "CV",
+    "flag": "/assets/cv.svg"
+  },
+  {
+    "name": "CW",
+    "flag": "/assets/cw.svg"
+  },
+  {
+    "name": "CX",
+    "flag": "/assets/cx.svg"
+  },
+  {
+    "name": "CY",
+    "flag": "/assets/cy.svg"
+  },
+  {
+    "name": "CZ",
+    "flag": "/assets/cz.svg"
+  },
+  {
+    "name": "DE",
+    "flag": "/assets/de.svg"
+  },
+  {
+    "name": "DJ",
+    "flag": "/assets/dj.svg"
+  },
+  {
+    "name": "DK",
+    "flag": "/assets/dk.svg"
+  },
+  {
+    "name": "DM",
+    "flag": "/assets/dm.svg"
+  },
+  {
+    "name": "DO",
+    "flag": "/assets/do.svg"
+  },
+  {
+    "name": "DZ",
+    "flag": "/assets/dz.svg"
+  },
+  {
+    "name": "EC",
+    "flag": "/assets/ec.svg"
+  },
+  {
+    "name": "EE",
+    "flag": "/assets/ee.svg"
+  },
+  {
+    "name": "EG",
+    "flag": "/assets/eg.svg"
+  },
+  {
+    "name": "EH",
+    "flag": "/assets/eh.svg"
+  },
+  {
+    "name": "ER",
+    "flag": "/assets/er.svg"
+  },
+  {
+    "name": "ES",
+    "flag": "/assets/es.svg"
+  },
+  {
+    "name": "ET",
+    "flag": "/assets/et.svg"
+  },
+  {
+    "name": "FI",
+    "flag": "/assets/fi.svg"
+  },
+  {
+    "name": "FJ",
+    "flag": "/assets/fj.svg"
+  },
+  {
+    "name": "FK",
+    "flag": "/assets/fk.svg"
+  },
+  {
+    "name": "FM",
+    "flag": "/assets/fm.svg"
+  },
+  {
+    "name": "FO",
+    "flag": "/assets/fo.svg"
+  },
+  {
+    "name": "FR",
+    "flag": "/assets/fr.svg"
+  },
+  {
+    "name": "GA",
+    "flag": "/assets/ga.svg"
+  },
+  {
+    "name": "GB-ENG",
+    "flag": "/assets/gb-eng.svg"
+  },
+  {
+    "name": "GB-NIR",
+    "flag": "/assets/gb-nir.svg"
+  },
+  {
+    "name": "GB-SCT",
+    "flag": "/assets/gb-sct.svg"
+  },
+  {
+    "name": "GB-WLS",
+    "flag": "/assets/gb-wls.svg"
+  },
+  {
+    "name": "GB",
+    "flag": "/assets/gb.svg"
+  },
+  {
+    "name": "GD",
+    "flag": "/assets/gd.svg"
+  },
+  {
+    "name": "GE",
+    "flag": "/assets/ge.svg"
+  },
+  {
+    "name": "GF",
+    "flag": "/assets/gf.svg"
+  },
+  {
+    "name": "GG",
+    "flag": "/assets/gg.svg"
+  },
+  {
+    "name": "GH",
+    "flag": "/assets/gh.svg"
+  },
+  {
+    "name": "GI",
+    "flag": "/assets/gi.svg"
+  },
+  {
+    "name": "GL",
+    "flag": "/assets/gl.svg"
+  },
+  {
+    "name": "GM",
+    "flag": "/assets/gm.svg"
+  },
+  {
+    "name": "GN",
+    "flag": "/assets/gn.svg"
+  },
+  {
+    "name": "GP",
+    "flag": "/assets/gp.svg"
+  },
+  {
+    "name": "GQ",
+    "flag": "/assets/gq.svg"
+  },
+  {
+    "name": "GR",
+    "flag": "/assets/gr.svg"
+  },
+  {
+    "name": "GS",
+    "flag": "/assets/gs.svg"
+  },
+  {
+    "name": "GT",
+    "flag": "/assets/gt.svg"
+  },
+  {
+    "name": "GU",
+    "flag": "/assets/gu.svg"
+  },
+  {
+    "name": "GW",
+    "flag": "/assets/gw.svg"
+  },
+  {
+    "name": "GY",
+    "flag": "/assets/gy.svg"
+  },
+  {
+    "name": "HK",
+    "flag": "/assets/hk.svg"
+  },
+  {
+    "name": "HM",
+    "flag": "/assets/hm.svg"
+  },
+  {
+    "name": "HN",
+    "flag": "/assets/hn.svg"
+  },
+  {
+    "name": "HR",
+    "flag": "/assets/hr.svg"
+  },
+  {
+    "name": "HT",
+    "flag": "/assets/ht.svg"
+  },
+  {
+    "name": "HU",
+    "flag": "/assets/hu.svg"
+  },
+  {
+    "name": "ID",
+    "flag": "/assets/id.svg"
+  },
+  {
+    "name": "IE",
+    "flag": "/assets/ie.svg"
+  },
+  {
+    "name": "IL",
+    "flag": "/assets/il.svg"
+  },
+  {
+    "name": "IM",
+    "flag": "/assets/im.svg"
+  },
+  {
+    "name": "IN",
+    "flag": "/assets/in.svg"
+  },
+  {
+    "name": "IO",
+    "flag": "/assets/io.svg"
+  },
+  {
+    "name": "IQ",
+    "flag": "/assets/iq.svg"
+  },
+  {
+    "name": "IR",
+    "flag": "/assets/ir.svg"
+  },
+  {
+    "name": "IS",
+    "flag": "/assets/is.svg"
+  },
+  {
+    "name": "IT",
+    "flag": "/assets/it.svg"
+  },
+  {
+    "name": "JE",
+    "flag": "/assets/je.svg"
+  },
+  {
+    "name": "JM",
+    "flag": "/assets/jm.svg"
+  },
+  {
+    "name": "JO",
+    "flag": "/assets/jo.svg"
+  },
+  {
+    "name": "JP",
+    "flag": "/assets/jp.svg"
+  },
+  {
+    "name": "KE",
+    "flag": "/assets/ke.svg"
+  },
+  {
+    "name": "KG",
+    "flag": "/assets/kg.svg"
+  },
+  {
+    "name": "KH",
+    "flag": "/assets/kh.svg"
+  },
+  {
+    "name": "KI",
+    "flag": "/assets/ki.svg"
+  },
+  {
+    "name": "KM",
+    "flag": "/assets/km.svg"
+  },
+  {
+    "name": "KN",
+    "flag": "/assets/kn.svg"
+  },
+  {
+    "name": "KP",
+    "flag": "/assets/kp.svg"
+  },
+  {
+    "name": "KR",
+    "flag": "/assets/kr.svg"
+  },
+  {
+    "name": "KW",
+    "flag": "/assets/kw.svg"
+  },
+  {
+    "name": "KY",
+    "flag": "/assets/ky.svg"
+  },
+  {
+    "name": "KZ",
+    "flag": "/assets/kz.svg"
+  },
+  {
+    "name": "LA",
+    "flag": "/assets/la.svg"
+  },
+  {
+    "name": "LB",
+    "flag": "/assets/lb.svg"
+  },
+  {
+    "name": "LC",
+    "flag": "/assets/lc.svg"
+  },
+  {
+    "name": "LI",
+    "flag": "/assets/li.svg"
+  },
+  {
+    "name": "LK",
+    "flag": "/assets/lk.svg"
+  },
+  {
+    "name": "LR",
+    "flag": "/assets/lr.svg"
+  },
+  {
+    "name": "LS",
+    "flag": "/assets/ls.svg"
+  },
+  {
+    "name": "LT",
+    "flag": "/assets/lt.svg"
+  },
+  {
+    "name": "LU",
+    "flag": "/assets/lu.svg"
+  },
+  {
+    "name": "LV",
+    "flag": "/assets/lv.svg"
+  },
+  {
+    "name": "LY",
+    "flag": "/assets/ly.svg"
+  },
+  {
+    "name": "MA",
+    "flag": "/assets/ma.svg"
+  },
+  {
+    "name": "MC",
+    "flag": "/assets/mc.svg"
+  },
+  {
+    "name": "MD",
+    "flag": "/assets/md.svg"
+  },
+  {
+    "name": "ME",
+    "flag": "/assets/me.svg"
+  },
+  {
+    "name": "MF",
+    "flag": "/assets/mf.svg"
+  },
+  {
+    "name": "MG",
+    "flag": "/assets/mg.svg"
+  },
+  {
+    "name": "MH",
+    "flag": "/assets/mh.svg"
+  },
+  {
+    "name": "MK",
+    "flag": "/assets/mk.svg"
+  },
+  {
+    "name": "ML",
+    "flag": "/assets/ml.svg"
+  },
+  {
+    "name": "MM",
+    "flag": "/assets/mm.svg"
+  },
+  {
+    "name": "MN",
+    "flag": "/assets/mn.svg"
+  },
+  {
+    "name": "MO",
+    "flag": "/assets/mo.svg"
+  },
+  {
+    "name": "MP",
+    "flag": "/assets/mp.svg"
+  },
+  {
+    "name": "MQ",
+    "flag": "/assets/mq.svg"
+  },
+  {
+    "name": "MR",
+    "flag": "/assets/mr.svg"
+  },
+  {
+    "name": "MS",
+    "flag": "/assets/ms.svg"
+  },
+  {
+    "name": "MT",
+    "flag": "/assets/mt.svg"
+  },
+  {
+    "name": "MU",
+    "flag": "/assets/mu.svg"
+  },
+  {
+    "name": "MV",
+    "flag": "/assets/mv.svg"
+  },
+  {
+    "name": "MW",
+    "flag": "/assets/mw.svg"
+  },
+  {
+    "name": "MX",
+    "flag": "/assets/mx.svg"
+  },
+  {
+    "name": "MY",
+    "flag": "/assets/my.svg"
+  },
+  {
+    "name": "MZ",
+    "flag": "/assets/mz.svg"
+  },
+  {
+    "name": "NA",
+    "flag": "/assets/na.svg"
+  },
+  {
+    "name": "NC",
+    "flag": "/assets/nc.svg"
+  },
+  {
+    "name": "NE",
+    "flag": "/assets/ne.svg"
+  },
+  {
+    "name": "NF",
+    "flag": "/assets/nf.svg"
+  },
+  {
+    "name": "NG",
+    "flag": "/assets/ng.svg"
+  },
+  {
+    "name": "NI",
+    "flag": "/assets/ni.svg"
+  },
+  {
+    "name": "NL",
+    "flag": "/assets/nl.svg"
+  },
+  {
+    "name": "NO",
+    "flag": "/assets/no.svg"
+  },
+  {
+    "name": "NP",
+    "flag": "/assets/np.svg"
+  },
+  {
+    "name": "NR",
+    "flag": "/assets/nr.svg"
+  },
+  {
+    "name": "NU",
+    "flag": "/assets/nu.svg"
+  },
+  {
+    "name": "NZ",
+    "flag": "/assets/nz.svg"
+  },
+  {
+    "name": "OM",
+    "flag": "/assets/om.svg"
+  },
+  {
+    "name": "PA",
+    "flag": "/assets/pa.svg"
+  },
+  {
+    "name": "PE",
+    "flag": "/assets/pe.svg"
+  },
+  {
+    "name": "PF",
+    "flag": "/assets/pf.svg"
+  },
+  {
+    "name": "PG",
+    "flag": "/assets/pg.svg"
+  },
+  {
+    "name": "PH",
+    "flag": "/assets/ph.svg"
+  },
+  {
+    "name": "PK",
+    "flag": "/assets/pk.svg"
+  },
+  {
+    "name": "PL",
+    "flag": "/assets/pl.svg"
+  },
+  {
+    "name": "PM",
+    "flag": "/assets/pm.svg"
+  },
+  {
+    "name": "PN",
+    "flag": "/assets/pn.svg"
+  },
+  {
+    "name": "PR",
+    "flag": "/assets/pr.svg"
+  },
+  {
+    "name": "PS",
+    "flag": "/assets/ps.svg"
+  },
+  {
+    "name": "PT",
+    "flag": "/assets/pt.svg"
+  },
+  {
+    "name": "PW",
+    "flag": "/assets/pw.svg"
+  },
+  {
+    "name": "PY",
+    "flag": "/assets/py.svg"
+  },
+  {
+    "name": "QA",
+    "flag": "/assets/qa.svg"
+  },
+  {
+    "name": "RE",
+    "flag": "/assets/re.svg"
+  },
+  {
+    "name": "RO",
+    "flag": "/assets/ro.svg"
+  },
+  {
+    "name": "RS",
+    "flag": "/assets/rs.svg"
+  },
+  {
+    "name": "RU",
+    "flag": "/assets/ru.svg"
+  },
+  {
+    "name": "RW",
+    "flag": "/assets/rw.svg"
+  },
+  {
+    "name": "SA",
+    "flag": "/assets/sa.svg"
+  },
+  {
+    "name": "SB",
+    "flag": "/assets/sb.svg"
+  },
+  {
+    "name": "SC",
+    "flag": "/assets/sc.svg"
+  },
+  {
+    "name": "SD",
+    "flag": "/assets/sd.svg"
+  },
+  {
+    "name": "SE",
+    "flag": "/assets/se.svg"
+  },
+  {
+    "name": "SG",
+    "flag": "/assets/sg.svg"
+  },
+  {
+    "name": "SH",
+    "flag": "/assets/sh.svg"
+  },
+  {
+    "name": "SI",
+    "flag": "/assets/si.svg"
+  },
+  {
+    "name": "SJ",
+    "flag": "/assets/sj.svg"
+  },
+  {
+    "name": "SK",
+    "flag": "/assets/sk.svg"
+  },
+  {
+    "name": "SL",
+    "flag": "/assets/sl.svg"
+  },
+  {
+    "name": "SM",
+    "flag": "/assets/sm.svg"
+  },
+  {
+    "name": "SN",
+    "flag": "/assets/sn.svg"
+  },
+  {
+    "name": "SO",
+    "flag": "/assets/so.svg"
+  },
+  {
+    "name": "SR",
+    "flag": "/assets/sr.svg"
+  },
+  {
+    "name": "SS",
+    "flag": "/assets/ss.svg"
+  },
+  {
+    "name": "ST",
+    "flag": "/assets/st.svg"
+  },
+  {
+    "name": "SV",
+    "flag": "/assets/sv.svg"
+  },
+  {
+    "name": "SX",
+    "flag": "/assets/sx.svg"
+  },
+  {
+    "name": "SY",
+    "flag": "/assets/sy.svg"
+  },
+  {
+    "name": "SZ",
+    "flag": "/assets/sz.svg"
+  },
+  {
+    "name": "TC",
+    "flag": "/assets/tc.svg"
+  },
+  {
+    "name": "TD",
+    "flag": "/assets/td.svg"
+  },
+  {
+    "name": "TF",
+    "flag": "/assets/tf.svg"
+  },
+  {
+    "name": "TG",
+    "flag": "/assets/tg.svg"
+  },
+  {
+    "name": "TH",
+    "flag": "/assets/th.svg"
+  },
+  {
+    "name": "TJ",
+    "flag": "/assets/tj.svg"
+  },
+  {
+    "name": "TK",
+    "flag": "/assets/tk.svg"
+  },
+  {
+    "name": "TL",
+    "flag": "/assets/tl.svg"
+  },
+  {
+    "name": "TM",
+    "flag": "/assets/tm.svg"
+  },
+  {
+    "name": "TN",
+    "flag": "/assets/tn.svg"
+  },
+  {
+    "name": "TO",
+    "flag": "/assets/to.svg"
+  },
+  {
+    "name": "TR",
+    "flag": "/assets/tr.svg"
+  },
+  {
+    "name": "TT",
+    "flag": "/assets/tt.svg"
+  },
+  {
+    "name": "TV",
+    "flag": "/assets/tv.svg"
+  },
+  {
+    "name": "TW",
+    "flag": "/assets/tw.svg"
+  },
+  {
+    "name": "TZ",
+    "flag": "/assets/tz.svg"
+  },
+  {
+    "name": "UA",
+    "flag": "/assets/ua.svg"
+  },
+  {
+    "name": "UG",
+    "flag": "/assets/ug.svg"
+  },
+  {
+    "name": "UM",
+    "flag": "/assets/um.svg"
+  },
+  {
+    "name": "US",
+    "flag": "/assets/us.svg"
+  },
+  {
+    "name": "UY",
+    "flag": "/assets/uy.svg"
+  },
+  {
+    "name": "UZ",
+    "flag": "/assets/uz.svg"
+  },
+  {
+    "name": "VA",
+    "flag": "/assets/va.svg"
+  },
+  {
+    "name": "VC",
+    "flag": "/assets/vc.svg"
+  },
+  {
+    "name": "VE",
+    "flag": "/assets/ve.svg"
+  },
+  {
+    "name": "VG",
+    "flag": "/assets/vg.svg"
+  },
+  {
+    "name": "VI",
+    "flag": "/assets/vi.svg"
+  },
+  {
+    "name": "VN",
+    "flag": "/assets/vn.svg"
+  },
+  {
+    "name": "VU",
+    "flag": "/assets/vu.svg"
+  },
+  {
+    "name": "WF",
+    "flag": "/assets/wf.svg"
+  },
+  {
+    "name": "WS",
+    "flag": "/assets/ws.svg"
+  },
+  {
+    "name": "XK",
+    "flag": "/assets/xk.svg"
+  },
+  {
+    "name": "YE",
+    "flag": "/assets/ye.svg"
+  },
+  {
+    "name": "YT",
+    "flag": "/assets/yt.svg"
+  },
+  {
+    "name": "ZA",
+    "flag": "/assets/za.svg"
+  },
+  {
+    "name": "ZM",
+    "flag": "/assets/zm.svg"
+  },
+  {
+    "name": "ZW",
+    "flag": "/assets/zw.svg"
+  }
+]

@@ -1,95 +1,150 @@
 <div
-    class="absolute h-fit inset-0 items-center p-4 bg-black/90 backdrop-opacity-60 lg:bg-black/30  lg:backdrop-opacity/60 lg:flex lg:w-screen lg:justify-center">
-    <div class="flex-row w-full bg-white rounded-lg lg:flex-col lg:h-max lg:w-1/2 border-1 border-[#8a96a340]">
-        <div class="inline-flex py-2 px-4 font-semibold space-x-5 lg:w-full">
-            <a (click)="modalService.toggleModal()" class="flex items-center justify-center">
-                <i class="fa fa-arrow-left text-lg leading-6 "></i>
+    class="fixed overflow-y-hidden touch-none h-full inset-0 items-center p-4 bg-black/30 backdrop-opacity-60 lg:flex lg:w-full lg:h-screen lg:justify-center md:flex md:w-screen md:h-screen md:justify-center">
+    <div class="flex-row h-full w-full md:w-max bg-white rounded-lg lg:flex-col lg:h-fit lg:w-2/3 md:flex-col md:h-max border-1 border-[#8a96a340]">
+        <div class="inline-flex h-[8%] py-2 px-4 font-semibold space-x-5 lg:w-full md:w-full">
+            <a (click)="modalService.toggleModal()" class="flex items-center justify-center cursor-pointer">
+                <i class="fa fa-arrow-left text-lg leading-6"></i>
             </a>
-            <h4 class="font-bold text-lg">INICIAR SESIÓN PARA SUSCRIBIRSE</h4>
+            <h4 class="text-sm font-bold text-lg md:text-ms">INICIAR SESIÓN PARA SUSCRIBIRSE</h4>
         </div>
-        <div class="md:flex lg:flex">
-            <div class="md:w-2/3 px-4 md:flex-col lg:flex-col">
-                <div class="h-20 rounded-t-lg bg-[url(/assets/header.jpg)] bg-cover bg-center px-1">
-                </div>
-                <div class="bg-white p-3 shadow rounded-lg">
-                    <div class="flex relative items-center">
-                        <img alt="Profile picture of Elizabeth Dream"
-                            class="w-25 h-25 -top-15 border-2 rounded-full absolute text-white"
-                            src="/assets/avatar.jpg" />
-                        <div class="relative flex-col -top-2 translate-x-[44%] md:translate-x-[22%] px-2 w-full">
-                            <div class="flex-end text-start items-center">
-                                <span class="font-bold text-md text-black">
-                                    Elizabeth
+        <div class="h-[92%] overflow-y-scroll overflow-x-hidden scrollbar-hidden">
+            <div class="md:flex md:w-full lg:flex lg:w-full">
+                <div class="px-4 md:flex-col lg:flex-col">
+                    <div class="h-20 rounded-t-lg bg-[url(/assets/header.jpg)] bg-cover bg-center px-1">
+                    </div>
+                    <div class="bg-white p-3 shadow rounded-lg">
+                        <div class="flex relative items-center">
+                            <img alt="Profile picture of Carolina Herrera"
+                                class="w-25 h-25 -top-15 border-2 rounded-full absolute text-white"
+                                src="/assets/avatar.jpg" />
+                            <div class="relative flex-col -top-2 translate-x-[36%] md:translate-x-[22%] lg:translate-x-[33%] px-2 w-full">
+                                <div class="flex-end text-start items-center">
+                                    <span class="font-bold text-md text-black">
+                                        Carolina
+                                    </span>
+                                    <i class=" fas fa-moon ml-2 text-yellow-500">
+                                    </i>
+                                    <i class="fas fa-check-circle ml-2 text-black">
+                                    </i>
+                                </div>
+                                <span class="text-sm text-gray-500">
+                                    {{"@caro.herrera"}}
                                 </span>
-                                <i class=" fas fa-moon ml-2 text-yellow-500">
-                                </i>
-                                <i class="fas fa-check-circle ml-2 text-black">
-                                </i>
                             </div>
-                            <span class="text-sm text-gray-500">
-                                {{"@elizabeth_dreamm"}}
-                            </span>
                         </div>
-                    </div>
-                    <div class="flex-row">
-                        <div>
-                            <h2 class="font-semibold text-[#8a96a3]">SUSCRIBETE Y OBTEN ESTAS VENTAJAS:</h2>
-                        </div>
-                        <div>
-                            <li class="flex space-x-2 h-fit items-center py-2">
-                                <i class="fa fa-check text-blue-400 text-2xl"></i>
-                                <span class="text-md text-start">Acceso total al contenido de este usuario</span>
-                            </li>
-                            <li class="flex space-x-2 items-center py-2">
-                                <i class="fa fa-check text-blue-400 text-2xl"></i>
-                                <span class="text-md">Mensaje directo con este usuario</span>
-                            </li>
-                            <li class="flex space-x-2 items-center py-2">
-                                <i class="fa fa-check text-blue-400 text-2xl"></i>
-                                <span class="text-md">Cancelar su suscripción en cualquier momento</span>
-                            </li>
+                        <div class="flex-row">
+                            <div>
+                                <h2 class="font-semibold text-[#8a96a3] text-sm">SUSCRIBETE Y OBTEN ESTAS VENTAJAS:</h2>
+                            </div>
+                            <div>
+                                <li class="flex space-x-2 h-fit items-center py-1">
+                                    <i class="fa fa-check text-blue-400 text-2xl"></i>
+                                    <span class="text-md text-start">Acceso total al contenido de este usuario</span>
+                                </li>
+                                <li class="flex space-x-2 items-center py-1">
+                                    <i class="fa fa-check text-blue-400 text-2xl"></i>
+                                    <span class="text-md">Mensaje directo con este usuario</span>
+                                </li>
+                                <li class="flex space-x-2 items-center py-1">
+                                    <i class="fa fa-check text-blue-400 text-2xl"></i>
+                                    <span class="text-md">Cancelar su suscripción en cualquier momento</span>
+                                </li>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
-            <div class="w-full p-4 md:w-1/2 lg:w-1/2">
-                <div class="flex items-center justify-center">
-                    <img class="hidden w-1/3" src="/assets/logo.png" alt="">
-                </div>
-                <span class=" font-semibold">iniciar sesión</span>
-                <div class="flex mt-2">
-                    <form action="" class="py-2 space-y-6 w-full">
-                        <div class="h-1/4 border border-[#8a96a3] rounded-sm justify-center items-center">
-                            <input class="px-3 h-full items-center md:w-full" type="email" placeholder="Correo">
+                <div class="w-full px-4 py-1 md:w-1/2 lg:w-1/2 lg:px-6 lg:py-3">
+                    <div class="hidden items-center justify-center md:flex lg:flex">
+                        <img class="w-full md:w-2/2 lg:w-2/2" src="/assets/formLogo.png" alt="">
+                    </div>
+                    <span class="font-semibold" *ngIf="loginFormActive()">iniciar sesión</span>
+                    <span class="font-semibold" *ngIf="!loginFormActive()">Registrarse</span>
+                    <div>
+                    <div class="flex pt-2">
+                        <div action="" class="pt-2 space-y-6 w-full" *ngIf="loginFormActive()">
+                            <div class="h-1/6 border border-[#8a96a3] rounded-sm justify-center items-center md:h-max lg:h-max">
+                                <input class="p-3 h-full items-center w-full" type="email" placeholder="Correo" [(ngModel)]="email" required email #emailInput="ngModel">
+                                <p *ngIf="emailInput.invalid && emailInput.touched" class="text-red-500 text-sm absolute">
+                                    {{ emailInput.errors?.['required'] ? 'El correo es obligatorio.' : 'Ingrese un correo válido.' }}
+                                  </p>
+                            </div>
+                            <div class="h-1/6 border border-[#8a96a3] rounded-sm justify-center items-center md:h-max lg:h-max">
+                                <input class="p-3 h-full items-center w-full" type="password" placeholder="Contraseña" [(ngModel)]="password" required minlength="6" #passwordInput="ngModel" >
+                                <p *ngIf="passwordInput.invalid && passwordInput.touched" class="text-red-500 text-sm absolute">
+                                    {{ passwordInput.errors?.['required'] ? 'La contraseña es obligatoria.' : 'Debe tener al menos 6 caracteres.' }}
+                                </p>
+                            </div>
+                            <div>
+                                <button (click)="login()" type="button"  [disabled]="emailInput.invalid || passwordInput.invalid"
+                                    class="w-full text-white font-semibold text-sm px-4 py-2 rounded-full mb-2 bg-[#00aff0] hover:bg-[#0091ea] cursor-pointer">
+                                    INICIAR SESIÓN
+                                </button>
+                                <div class="flex justify-center px-5 py-1 md:px-0">
+                                    <small class="text-xs justify-between md:text-sm">
+                                    Al inciar sesión y usar OnlyFans, aceptas nuestros <a (click)="terms()" class="text-blue-400 cursor-pointer">Términos de
+                                        servicio</a> y <a (click)="privacyPolicies()" class="text-blue-400 cursor-pointer">Políticas de
+                                        privacidad</a>,
+                                    y confirmas que tienes al menos 18 años.
+                                </small>
+                                </div>
+                            </div>
                         </div>
-                        <div class="h-1/4 border border-[#8a96a3] rounded-sm justify-center items-center">
-                            <input class="px-3 h-full items-center md:w-full" type=" password" placeholder="Contraseña">
+                        <div action="" class="pt-2 space-y-5 w-full" *ngIf="!loginFormActive()">
+                            <div class="h-1/6 border border-[#8a96a3] rounded-sm justify-center items-center md:h-max lg:h-max">
+                                <input class="px-3 h-full items-center md:w-full lg:p-3" type="text" placeholder="Nombre" [(ngModel)]="name" required #regNameInput="ngModel" minlength="5">
+                                <p *ngIf="regNameInput.invalid && regNameInput.touched" class="text-red-500 text-sm absolute">
+                                    {{ regNameInput.errors?.['required'] ? 'El nombre es obligatorio.' : 'Ingrese un nombre válido.' }}
+                                  </p>
+                            </div>
+                            <div class="h-1/6 border border-[#8a96a3] rounded-sm justify-center items-center md:h-max lg:h-max">
+                                <input class="px-3 h-full items-center md:w-full lg:p-3" type="email" placeholder="Correo" [(ngModel)]="email" required email #regEmailInput="ngModel" >
+                                <p *ngIf="regEmailInput.invalid && regEmailInput.touched" class="text-red-500 text-sm absolute">
+                                    {{ regEmailInput.errors?.['required'] ? 'El correo es obligatorio.' : 'Ingrese un correo válido.' }}
+                                  </p>
+                            </div>
+                            <div class="h-1/6 border border-[#8a96a3] rounded-sm justify-center items-center md:h-max lg:h-max">
+                                <input class="px-3 h-full items-center md:w-full lg:p-3" type=" password" placeholder="Contraseña" [(ngModel)]="password" required minlength="6" #regPasswordInput="ngModel" >
+                                <p *ngIf="regPasswordInput.invalid && regPasswordInput.touched" class="text-red-500 text-sm absolute">
+                                    {{ regPasswordInput.errors?.['required'] ? 'La contraseña es obligatoria.' : 'Ingrese una contraseña válida.' }}
+                                </p>
+                            </div>
+                            <div>
+                                <button [disabled]="regEmailInput.invalid || regPasswordInput.invalid || regNameInput.invalid"
+                                    class="w-full text-white font-semibold text-sm px-4 py-2 rounded-full bg-[#00aff0] hover:bg-[#0091ea] cursor-pointer">
+                                    REGISTRARSE
+                                </button>
+                                <div class="flex justify-center px-1 py-1">
+                                    <small class="text-xs justify-between">
+                                        Al registrarte en OnlyFans, aceptas nuestros <a (click)="terms()" class="text-blue-400 cursor-pointer">Términos de
+                                            servicio</a> y <a (click)="privacyPolicies()" class="text-blue-400 cursor-pointer">Políticas de
+                                            privacidad</a>,
+                                        y confirmas que tienes al menos 18 años.
+                                    </small>
+                                </div>
+                            </div>
                         </div>
-                        <div>
-                            <button
-                                class="w-full text-white font-semibold text-sm px-4 py-2 rounded-full mb-2 bg-[#00aff0] hover:bg-[#0091ea] cursor-pointer">
-                                INICIAR SESIÓN
-                            </button>
+                    </div>
+                        @if (loginFormActive()) {
+                        <div class="items-center p-1 mb-5">
+                            <li class="list-none text-center" *ngIf="loginFormActive()">
+                                <a class="text-sm text-blue-400 hover:text-[#0091ea] cursor-pointer" (click)="changeForm()">Registrate para OnlyFans</a>
+                            </li>
+                            
+                            <li class="list-none text-center">
+                                <a class="text-sm text-blue-400 hover:text-[#0091ea] cursor-pointer" href="">¿Has olvidado la contraseña?</a>
+                            </li>
                         </div>
-                    </form>
-                </div>
-                <div class="py-2 justify-center">
-                    <small>
-                        Al iniciar sesión y usar OnlyFans, aceptas nuestros <span class="text-blue-400">Términos de
-                            servicio</span> y <span class="text-blue-400">Políticas de
-                            privacidad</span>,
-                        y confirmas que tienes al menos 18 años.
-                    </small>
-                </div>
-                <div>
-                    <li class="list-none text-center">
-                        <a class="text-sm text-blue-500" href="">¿Has olvidado la contraseña?</a>
-                    </li>
-                    <li class="list-none text-center">
-                        <a class="text-sm text-blue-500" href="">Registrate para OnlyFans</a>
-                    </li>
+                        } @else {
+                            <div class="items-center pt-10 mb-5 px-2">
+                            <li class="list-none text-center" *ngIf="!loginFormActive()">
+                                <span class="text-sm">Ya tienes una cuenta? <a class="text-sm text-blue-500 cursor-pointer hover:text-[#0091ea]" (click)="changeForm()">Inicia sesión</a></span>
+                            </li>
+                            </div>
+                        }
+                    </div>
                 </div>
             </div>
         </div>
     </div>
 </div>
+<app-response-modal *ngIf="this.modalService.showResponseModal()"/>

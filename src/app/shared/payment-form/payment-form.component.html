@@ -1,0 +1,128 @@
+<div class="fixed flex inset-0 h-full overflow-y-hidden items-center justify-center bg-black/30 backdrop-opacity-60 -50 p-4 md:flex-col lg:flex-col">
+    @if(paymentLoading()) {
+        <div class="flex-col z-50 px-6 pt-2 justify-center h-fit w-fit bg-white rounded-lg border-1 border-[#8a96a340]">
+            <div class="flex h-[2%] bg-white items-center px-4 py-2 border-b-1 border-[#8a96a340]">
+                <h3 class="font-medium/6 font-semibold text-sm">AGREGAR MEDIO DE PAGO</h3>
+            </div>
+            <div class="flex justify-center h-fit p-3">
+                <svg class="z-60 -ml-1 size-15 animate-spin text-grey" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"><circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle><path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path></svg>
+            </div>
+        </div>
+    } @else if (paymentResult() && !paymentLoading() && !errorSubmited()) {
+        <div class="flex-col z-50 px-6 pt-2 justify-center h-fit w-fit bg-white rounded-lg border-1 border-[#8a96a340]">
+            <div class="flex h-[2%] bg-white items-center px-4 py-2 border-b-1 border-[#8a96a340]">
+                <h3 class="font-medium/6 font-semibold text-sm">Revisa tu conexión e intentalo de nuevo.</h3>
+            </div>
+            <div class="flex justify-center p-3">
+                <i class="fa fa-exclamation-circle text-5xl animate-puls text-red-500"></i>
+            </div>
+            <button class="flex w-full h-9 mb-3 text-white bg-[#00aff0] items-center justify-center rounded-full hover:bg-[#f0f9fe] cursor-pointer text-black transition duration-300 ease-in-out md:mb-1 lg:mb-1" (click)="tryAgain()">Intentar nuevamente</button>
+        </div>
+    } @else if (paymentResult() && !paymentLoading() && errorSubmited()) {
+        <div class="flex-col z-50 px-6 pt-2 justify-center h-fit w-fit bg-white rounded-lg border-1 border-[#8a96a340]">
+            <div class="flex h-[2%] bg-white items-center px-4 py-4 border-[#8a96a340]">
+                <h3 class="font-medium/6 font-semibold text-sm">Gracias por suscribirte.</h3>
+            </div>
+            <div class="flex justify-center h-full p-3">
+                <i class="fa fa-check-circle text-5xl animate-puls text-green-500"></i>
+            </div>
+        </div>
+    } 
+    @else {
+    <div class="flex-col h-full w-3/2 bg-white rounded-lg border-1 border-[#8a96a340] md:w-2/3 lg:w-1/3">
+        <div class="flex h-[10%] bg-white items-center px-4 py-6 border-b-1 border-[#8a96a340]">
+            <h3 class="font-medium/6 font-semibold text-sm">AGREGAR MEDIO DE PAGO</h3>
+        </div>
+        <div class="h-[80%] overflow-y-scroll flex-col scrollbar-hidden">
+            <div class="flex-col">
+                <div class="flex px-4 py-3 text-start">
+                    <h2 class=" text-md font-sans font-semibold text-[#8a96a3]">INFORMACIÓN DE FACTURACIÓN</h2>
+                </div>
+                <div class="flex px-4 text-start">
+                    <span>Cumplimos totalmente con los estándares de seguridad de datos de la industria de tarjetas de pago.</span>
+                </div>
+                <div class="form-container mt-5 px-2">
+                    <form action="" class="p-2 space-y-6">
+                        <div class="md:inline-flex justify-center w-full space-x-3 space-y-6 md:space-y-0 lg:space-y-0">
+                            <div class="relative flex w-full h-1/2 items-center md:w-1/2">
+                                <app-custom-select class="w-full z-100"
+                                [options]="countries"
+                                [selectedOption]="countryFormControl"
+                                [selectedFlag]="flagFormControl"
+                              ></app-custom-select>
+                                <label class="z-50 absolute ml-3 text-[#8a96a3] text-sm pt-2 px-1 font-semibold font-thin -translate-y-full bg-white cursor-text peer-focus:text-[#0091ea]" for="userAddress">País</label>
+                            </div>
+                            <div class="relative flex w-full items-center md:w-1/2">
+                                <select class="z-40 border-2 border-[#8a96a340] h-12 px-2 w-full rounded-md peer focus:outline-none focus:border-1 focus:border-[#00aff0]" name="userAddress" id="userAddress"></select>
+                                <label class="z-50 absolute ml-3 text-[#8a96a3] text-sm pt-2 px-1 -translate-y-full bg-white font-thin cursor-text peer-focus:text-[#0091ea]" for="userAddress">Estado/Provincia</label>
+                            </div>
+                        </div>
+                        <div class="relative flex w-full items-center">
+                            <input class="z-50 border-2 border-[#8a96a340] h-12 px-2 w-full rounded-md peer focus:outline-none focus:border-1 focus:border-[#00aff0]" type="text" name="userAddress" id="userAddress">
+                            <label class="z-40 absolute ml-3 text-[#8a96a3] font-normal cursor-text px-1 peer-focus:text-[#0091ea] peer-focus:text-sm peer-focus:font-thin peer-focus:pt-2 peer-focus:-translate-y-[100%] peer-focus:z-60 peer-focus:bg-white" for="userAddress">Dirección</label>
+                        </div>
+                        <div class="md:inline-flex justify-center w-full space-x-3 space-y-6 md:space-y-0 lg:space-y-0">
+                            <div class="relative flex w-full items-center md:w-1/2">
+                                <select class="z-40 border-2 border-[#8a96a340] h-12 px-2 w-full rounded-md peer focus:outline-none focus:border-1 focus:border-[#00aff0]" name="userAddress" id="userAddress"></select>
+                                <label class="z-50 absolute ml-3 text-[#8a96a3] text-sm pt-2 px-1 -translate-y-full bg-white font-thin cursor-text peer-focus:text-[#0091ea]" for="userAddress">Ciudad</label>
+                            </div>
+                            <div class="relative flex w-full items-center md:w-1/2">
+                                <input class="z-50 border-2 border-[#8a96a340] h-12 px-2 w-full rounded-md peer focus:outline-none focus:border-1 focus:border-[#00aff0]" type="text" name="userAddress" id="userAddress">
+                                <label class="z-40 absolute ml-3 text-[#8a96a3] cursor-text px-1 peer-focus:text-[#0091ea] peer-focus:text-sm peer-focus:font-thin peer-focus:pt-2 peer-focus:-translate-y-[100%] peer-focus:z-60 peer-focus:bg-white font-normal" for="userAddress">ZIP/Codígo postal</label>
+                            </div>
+                        </div>
+                        <div class="flex py-2 text-start">
+                            <h2 class=" text-xl font-sans font-normal text-[#8a96a3]">Detalles de la tarjeta</h2>
+                        </div>
+                        <div class="relative flex w-full items-center">
+                            <input class="z-50 border-2 border-[#8a96a340] h-12 px-2 w-full rounded-md peer focus:outline-none focus:border-1 focus:border-[#00aff0]" type="text" name="userAddress" id="userAddress">
+                            <label class="z-40 absolute ml-3 text-[#8a96a3] cursor-text px-1 peer-focus:text-[#0091ea] peer-focus:text-sm peer-focus:font-thin peer-focus:pt-2 peer-focus:-translate-y-[100%] peer-focus:z-60 peer-focus:bg-white font-normal" for="userAddress">Correo</label>
+                        </div>
+                        <div class="relative flex w-full items-center">
+                            <input class="z-50 border-2 border-[#8a96a340] h-12 px-2 w-full rounded-md peer focus:outline-none focus:border-1 focus:border-[#00aff0]" type="text" name="userAddress" id="userAddress">
+                            <label class="z-40 absolute ml-3 text-[#8a96a3] cursor-text px-1 peer-focus:text-[#0091ea] peer-focus:text-sm peer-focus:font-thin peer-focus:pt-2 peer-focus:-translate-y-[100%] peer-focus:z-60 peer-focus:bg-white font-normal" for="userAddress">Nombre</label>
+                        </div>
+                        <div class="relative flex w-full items-center">
+                            <input class="z-50 border-2 border-[#8a96a340] h-12 px-2 w-full rounded-md peer focus:outline-none focus:border-1 focus:border-[#00aff0]" type="text" name="userAddress" id="userAddress">
+                            <label class="z-40 absolute ml-3 text-[#8a96a3] cursor-text px-1 peer-focus:text-[#0091ea] peer-focus:text-sm peer-focus:font-thin peer-focus:pt-2 peer-focus:-translate-y-[100%] peer-focus:z-60 peer-focus:bg-white font-normal" for="userAddress">Documento de identidad</label>
+                        </div>
+                        <div class="relative flex w-full items-center">
+                            <input class="z-50 border-2 border-[#8a96a340] h-12 px-2 w-full rounded-md peer focus:outline-none focus:border-1 focus:border-[#00aff0]" type="text" name="userAddress" id="userAddress">
+                            <label class="z-40 absolute ml-3 text-[#8a96a3] cursor-text px-1 peer-focus:text-[#0091ea] peer-focus:text-sm peer-focus:font-thin peer-focus:pt-2 peer-focus:-translate-y-[100%] peer-focus:z-60 peer-focus:bg-white font-normal" for="userAddress">Número de la tarjeta</label>
+                        </div>
+                        <div class="inline-flex w-full space-x-3">
+                            <div class="relative flex w-2/3 items-center">
+                                <input class="z-50 border-2 border-[#8a96a340] h-12 px-2 w-full rounded-md peer focus:outline-none focus:border-1 focus:border-[#00aff0]" type="text" name="userAddress" id="userAddress">
+                                <label class="z-40 absolute ml-3 text-[#8a96a3] cursor-text px-1 peer-focus:text-[#0091ea] peer-focus:text-sm peer-focus:font-thin peer-focus:pt-2 peer-focus:-translate-y-[100%] peer-focus:z-60 peer-focus:bg-white font-normal" for="userAddress">MM / YY</label>
+                            </div>
+                            <div class="relative flex w-2/4 items-center">
+                                <input class="z-50 border-2 border-[#8a96a340] h-12 px-2 w-full rounded-md peer focus:outline-none focus:border-1 focus:border-[#00aff0]" type="text" name="userAddress" id="userAddress">
+                                <label class="z-40 absolute ml-3 text-[#8a96a3] cursor-text px-1 peer-focus:text-[#0091ea] peer-focus:text-sm peer-focus:font-thin peer-focus:pt-2 peer-focus:-translate-y-[100%] peer-focus:z-60 peer-focus:bg-white font-normal" for="userAddress">CVC</label>
+                            </div>
+                        </div>
+                        <div class="inline-flex w-full px-3 py-2 items-start space-x-2">
+                           <input type="radio" id="oldRadioBtn" class="size-6 md:size-10 lg:size-12">
+                           <label for="oldRadioBtn" class="px-2">Marque aquí para confirmar que tiene al menos 18 años y la mayoría de edad en su lugar de residencia.</label>
+                        </div>
+                    </form>
+                </div>
+                <footer class="mt-6 p-2 flex-col items-center">
+                    <div class="inline-flex w-full justify-center py-0">
+                        @for (icon of cardIcons; track $index) {
+                            <img [src]="icon" alt="" width="15%" height="auto">
+                        }
+                    </div>
+                    <small class="flex w-full px-3 py-0">
+                            Fenix International Limited, 9th Floor, 107 Cheapside, London, EC2V 6DN
+                            Fenix Internet LLC, 1000 N.West Street, Suite 1200, Wilmington, Delaware, 19801 USA
+                    </small>
+                </footer>
+            </div>
+        </div>
+        <div class="flex h-[10%] space-x-4 text-[#0091ea] font-semibold items-center justify-end px-4 py-3 border-t-1 border-[#8a96a340]">
+            <button class="w-22 h-full rounded-full hover:bg-[#f0f9fe] cursor-pointer" (click)="modalService.togglePaymentModal()">Cancelar</button>
+            <button class="w-22 h-full rounded-full hover:bg-[#f0f9fe] cursor-pointer" (click)="subscribe()">Aceptar</button>
+        </div>  
+    </div>
+}
+</div>

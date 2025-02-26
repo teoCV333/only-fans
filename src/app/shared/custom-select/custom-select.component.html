@@ -1,0 +1,14 @@
+<div class="custom-select rounded-md">
+    <div class="selected-option rounded-md inline-flex option" (click)="toggleOptions()">
+       <div class="inline-flex">
+            <img [src]="selectedFlag" width="30" height="20">
+            {{ selectedOption }}
+       </div>
+      </div>
+    <div class="options">
+      <div class="option" *ngFor="let option of options" (click)="selectOption(option.name);selectFlag(option.flag);toggleOptions()">
+        <img [src]="option.flag" width="30" height="20">
+        <span>{{ option.name }}</span>
+      </div>
+    </div>
+</div>

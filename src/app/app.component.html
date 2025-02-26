@@ -1,23 +1,37 @@
-<div class="flex-row h-screen md:flex md:w-screen lg:w-screen">
+@if(initialLoading()) {
+    <app-initial-animation/>
+} @else {<div class="flex-col flex h-full overflow-y-hidden touch-none md:flex-row lg:flex-row ">
     <!-- Sidebar -->
-    <div class="hidden md:flex flex-col items-start px-8 py-6 space-y-5 bg-white">
+    <div class="hidden w-1/3 md:w-1/5 md:flex flex-col items-start px-8 py-6 space-y-5 bg-white">
         <!-- Profile Icon -->
         <div class="flex items-center space-x-2 px-3">
             <div class="w-8 h-8 bg-gray-200 rounded-full flex items-center justify-center">
-                <span class="text-blue-500 font-bold text-sm">MC</span>
+                <i class="fa fa-user text-[#8a96a3]"></i>
             </div>
         </div>
 
         <!-- Navigation Links -->
-        <div class="flex flex-col space-y-4 text-gray-500 font-semibold">
-            @for(option of menuOptions; track $index) {
-            <a href="#"
-                class="flex items-center text-[#8a96a3] space-x-4 hover:bg-[#f0f9fe] hover:text-[#0091ea] rounded-full pl-3 pr-10 transition duration-300 ease-in-out">
-                <div class="flex flex-col w-10 h-10 items-center justify-center">
+        <div class="flex flex-col space-y-4 text-gray-500 font-semibold w-max md:items-center" *ngIf="!modalService.logged()">
+            @for(option of guessMenuOptions; track $index) {
+            <button (click)="option.action()"
+                class="flex items-center cursor-pointer text-[#8a96a3] w-full space-x-4 hover:bg-[#f0f9fe] hover:text-[#0091ea] rounded-full pl-3 pr-10 transition duration-300 ease-in-out md:pl-0 lg:w-fulll">
+                <div class="flex flex-col h-10  items-center justify-center">
                     <i class="text-2xl" [ngClass]="option.icon"></i>
                 </div>
                 <span class="text-xl">{{option.title}}</span>
-            </a>
+            </button>
+            }
+        </div>
+
+        <div class="flex flex-col space-y-4 text-gray-500 font-semibold w-max md:items-center" *ngIf="modalService.logged()">
+            @for(option of userMenuOptions; track $index) {
+            <button (click)="option.action()"
+                class="flex items-center cursor-pointer text-[#8a96a3] w-full space-x-4 hover:bg-[#f0f9fe] hover:text-[#0091ea] rounded-full pl-3 pr-10 transition duration-300 ease-in-out md:pl-0 lg:w-fulll">
+                <div class="flex flex-col h-10  items-center justify-center">
+                    <i class="text-2xl" [ngClass]="option.icon"></i>
+                </div>
+                <span class="text-xl">{{option.title}}</span>
+            </button>
             }
         </div>
 
@@ -29,16 +43,16 @@
         </button> -->
     </div>
     <!-- Main Content -->
-    <div class="w-full md:w-5/6 lg:w-2/5 overflow-y-scroll scrollbar-hidden border-x-1 border-[#8a96a340]">
+    <div class="w-full h-full overflow-y-auto scrollbar-hidden border-x-1 border-[#8a96a340] md:w-1/2 lg:w-2/3">
         <div class="h-25 bg-[url(/assets/header.jpg)] bg-cover bg-center md:h-50 px-1">
             <div class="flex justify-between items-start mb-4">
                 <div class="flex items-center">
                     <i class="fas fa-arrow-left py-4 px-2 text-xl ml-2 text-white">
                     </i>
                     <span class="font-bold text-white ml-3 text-xl">
-                        Elizabeth Dream
+                        Carolina
                     </span>
-                    <i class="fas fa-moon ml-2 text-yellow-500">
+                    <i class="fas fa-heart ml-2 text-red-500">
                     </i>
                     <i class="fas fa-check-circle ml-2 text-white">
                     </i>
@@ -51,33 +65,35 @@
         </div>
         <div class="bg-white p-4 shadow relative">
             <div class="flex items-center mb-2">
-                <img alt="Profile picture of Elizabeth Dream"
+                <img alt="Profile picture of Caro herrera"
                     class="w-25 h-25 -top-10 border rounded-full mr-3 absolute text-white" src="/assets/avatar.jpg" />
                 <div>
                     <div class="flex items-center mt-12">
                         <span class="font-semibold text-black text-xl">
-                            Elizabeth Dream
+                            Carolina
                         </span>
-                        <i class=" fas fa-moon ml-2 text-yellow-500">
+                        <i class=" fas fa-heart ml-2 text-red-500">
                         </i>
                         <i class="fas fa-check-circle ml-2 text-black">
                         </i>
                     </div>
                     <span class="text-sm text-gray-500">
-                        {{"@elizabeth_dreamm"}} - Disponible ahora
+                        {{"@caro.sanchez"}} - Disponible ahora
                     </span>
                 </div>
             </div>
             <p class="text-black mb-4">
-                There’s nothing more attractive than a heart that loves deeply and a soul that shines brightly. Keep
-                being you. 👋💖
+                tu princesa 💞 no seas tímido, sé cómo guardar un secreto🎀 
             </p>
+            <!-- <p>
+                exclusive page 💗 : {{"@abbybunni"}}
+            </p> -->
         </div>
-        <div class="bg-white p-4 shadow mt-3">
+        <div class="bg-white p-4 shadow mt-3" *ngIf="!suscriptionActive.activeSub">
             <h2 class="text-[#8a96a3] font-semibold mb-2">
                 SUSCRIPCIÓN
             </h2>
-            <button (click)="modalService.toggleModal()"
+            <button (click)="subscribe()"
                 class="flex justify-between w-full text-white px-5 py-3 rounded-full mb-2 bg-[#00aff0] hover:bg-[#0091ea] cursor-pointer transition duration-300 ease-in-out">
                 <span>SUSCRÍBETE</span> <span>GRATIS</span>
             </button>
@@ -96,50 +112,96 @@
                 <span class="text-sm">723 MEDIOS</span>
             </div>
         </div>
-        <div
-            class="flex relative md:px-25 py-5 mb-4 h-full items-center justify-center bg-[url(/assets/lockedbg.png)] bg-cover lg:p-33">
-            <i class="fa fa-lock text-[4rem] text-[#dbdfe3] p-15"></i>
-            <div class="absolute mx-4 px-4 bottom-1 py-1 border-1 border-[#8a96a340] rounded-md">
-                <div class="inline-flex space-x-2 mb-2 text-[#8a96a3]">
-                    <li>
-                        <a class="p-1 space-x-1 "> <i class="fa fa-table-list"></i> <small>724 -</small></a>
-                    </li>
-                    <li>
-                        <a class="p-1 space-x-1"> <i class="fa fa-image"> </i> <small>713 -</small></a>
-                    </li>
-                    <li>
-                        <a class="p-1 space-x-1"> <i class="fa fa-video"></i> <small>11</small></a>
-                    </li>
+        @if(activeSection() === 1) {
+            @for (item of images; track $index) {
+            <div class="px-2 md:flex md:justify-center lg:flex lg:justify-center">
+                <div
+                [ngStyle]="getBackgroundStyle(item)"
+                class="flex relative md:px-25 py-5 rounded-sm my-2 items-center justify-center lg:p-33 lg:w-1/2 lg:mb-0">
+                <i class="fa fa-lock text-[4rem] text-[#dbdfe3] p-15" *ngIf="!suscriptionActive.activeSub"></i>
+                <div class="absolute mx-4 px-4 bottom-1 py-1 border-1 border-[#8a96a340] rounded-md" *ngIf="!suscriptionActive.activeSub">
+                    <div class="inline-flex space-x-2 mb-2 text-[#8a96a3]">
+                        <li>
+                            <a class="p-1 space-x-1 "> <i class="fa fa-table-list"></i> <small>724 -</small></a>
+                        </li>
+                        <li>
+                            <a class="p-1 space-x-1"> <i class="fa fa-image"> </i> <small>713 -</small></a>
+                        </li>
+                        <li>
+                            <a class="p-1 space-x-1"> <i class="fa fa-video"></i> <small>11</small></a>
+                        </li>
+                    </div>
+                    <button (click)="subscribe()"
+                        class="w-full text-white font-semibold text-sm px-4 py-2 rounded-full mb-2 bg-[#00aff0] hover:bg-[#0091ea] cursor-pointer transition duration-300 ease-in-out">
+                        SUSCRÍBETE PARA VER LAS PUBLICACIONES DEL USUARIO
+                    </button>
                 </div>
-                <button (click)="modalService.toggleModal()"
-                    class="w-full text-white font-semibold text-sm px-4 py-2 rounded-full mb-2 bg-[#00aff0] hover:bg-[#0091ea] cursor-pointer transition duration-300 ease-in-out">
-                    SUSCRÍBETE PARA VER LAS PUBLICACIONES DEL USUARIO
-                </button>
             </div>
-        </div>
+            </div>
+            <div class="w-full bg-white h-9"></div>
+                }
+        } @else {
+            @for (item of videos; track $index) {
+            <div class="px-2 md:flex md:justify-center lg:flex lg:justify-center">
+                <div
+                [ngStyle]="getBackgroundMediaStyle(item)"
+                class="flex relative py-2 my-1 items-center justify-center bg-cover md:px-25 lg:px-33 lg:px-12">
+                <div class="h-fit">
+                <video class="rounded-md" *ngIf="this.suscriptionActive.activeSub" autoplay loop muted playsinline>
+                    <source [src]="item" type="video/mp4">
+                </video>
+                </div>
+                <i class="fa fa-lock text-[4rem] text-[#dbdfe3] p-15" *ngIf="!this.suscriptionActive.activeSub"></i>
+                <div class="absolute mx-4 px-4 bottom-1 py-1 border-1 border-[#8a96a340] rounded-md" *ngIf="!this.suscriptionActive.activeSub">
+                    <div class="inline-flex space-x-2 mb-2 text-[#8a96a3]">
+                        <li>
+                            <a class="p-1 space-x-1 "> <i class="fa fa-table-list"></i> <small>724 -</small></a>
+                        </li>
+                        <li>
+                            <a class="p-1 space-x-1"> <i class="fa fa-image"> </i> <small>713 -</small></a>
+                        </li>
+                        <li>
+                            <a class="p-1 space-x-1"> <i class="fa fa-video"></i> <small>11</small></a>
+                        </li>
+                    </div>
+                    <button (click)="subscribe()"
+                        class="w-full text-white font-semibold text-sm px-4 py-2 rounded-full mb-2 bg-[#00aff0] hover:bg-[#0091ea] cursor-pointer transition duration-300 ease-in-out">
+                        SUSCRÍBETE PARA VER LAS PUBLICACIONES DEL USUARIO
+                    </button>
+                </div>
+            </div>
+            </div>
+            <div class="w-full bg-white h-9"></div>
+                }
+        }
     </div>
     <!-- Right Sidebar -->
-    <div class="hidden px-9 py-4 bg-white md:flex md:w-1/2 lg:flex-col lg:w-1/2">
+    <div class="hidden flex-col px-9 py-4 bg-white md:flex md:w-2/7 md:px-2 lg:flex-col lg:w-1/2">
         <div class="bg-white p-4 rounded-lg shadow">
-            <h2 class="text-[#8a96a3] font-bold mb-2">
+            <h2 class="text-[#8a96a3] font-bold mb-2 md">
                 SUSCRIPCIÓN
             </h2>
-            <button (click)="modalService.toggleModal()"
+            <button (click)="subscribe()" *ngIf="!suscriptionActive.activeSub"
                 class="flex justify-between w-full text-white font-semibold text-sm px-4 py-2 rounded-full mb-2 bg-[#00aff0] hover:bg-[#0091ea] cursor-pointer transition duration-300 ease-in-out">
                 <span>SUSCRÍBETE</span> <span>GRATIS</span>
             </button>
+            <button *ngIf="suscriptionActive.activeSub"
+                class="flex justify-center w-full text-white font-semibold text-sm px-4 py-2 rounded-full mb-2 bg-[#00aff0] hover:bg-[#0091ea] cursor-pointer transition duration-300 ease-in-out">
+                <span class="text-md" disabled>Ya estas suscrito a esta modelo</span>
+            </button>
         </div>
-        <div class="mt-4 text-gray-500 text-sm flex justify-center border-t-1 border-[#8a96a340]">
-            <a class="block mb-1 p-2" href="#">
+        <div class="mt-4 text-gray-500 flex justify-center border-t-1 border-[#8a96a340]">
+            <a class="block mb-1 p-2 cursor-pointer text-sm  hover:text-[#00aff0]" (click)="privacyPolicies()" >
                 Privacy
             </a>
-            <a class="block mb-1 p-2" href="#">
-                Cookie Notice
+            <a class="block mb-1 p-2 cursor-pointer text-sm  hover:text-[#00aff0]" (click)="cookiesNotice()">
+                Cookies
             </a>
-            <a class="block p-2" href="#">
-                Terms of Service
+            <a class="block p-2 cursor-pointer text-sm hover:text-[#00aff0]" (click)="cookiesNotice()">
+                Terms
             </a>
         </div>
     </div>
-    <app-modal class="transition duration-300 ease" *ngIf="modalService.showModal()" />
-</div>
+</div>}
+<app-add-card-modal *ngIf="modalService.showAddCardModal() && suscriptionActive.activeSub == false"/>
+<app-modal  *ngIf="!modalService.logged() && modalService.showModal()" />
