@@ -1,7 +1,7 @@
 .custom-select {
     position: relative;
     width: 100%; /* Adjust as needed */
-    height: 10vh;
+    height: 5vh;
   }
   
   .custom-select .selected-option {

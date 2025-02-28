@@ -1,6 +1,7 @@
 import { HttpClient, HttpHeaders, HttpResponse } from '@angular/common/http';
 import { inject, Injectable, signal } from '@angular/core';
 import { toSignal } from '@angular/core/rxjs-interop';
+import { catchError, map, switchMap, throwError } from 'rxjs';
 
 interface ValidateSub {
   activeSub: boolean;
@@ -10,26 +11,55 @@ interface ValidateSub {
   providedIn: 'root'
 })
 export class SuscriptionService {
-  private apiUrl = 'http://localhost:3000/user'; // Your Express API URL
+  private apiUrlUser = 'http://localhost:3000/api/user'; // Your Express API URL
+  private apiUrl = 'http://localhost:3000/api/paymethod'; // Your Express API URL
   private http = inject(HttpClient); // Use inject() instead of constructor
   private token = localStorage.getItem('token');
 
   private headers = new HttpHeaders().set('Authorization', `Bearer ${this.token}`);
 
-  activeSubscription = toSignal(
-    this.http.get<ValidateSub>(`${this.apiUrl}/validatesub`, { headers: this.headers }),
-    { initialValue: {activeSub: false} } // or any default value
-  );
+  activeSubscription = signal<{ activeSub: boolean }>({activeSub: false}); 
 
-  constructor() { }
-
-  activateSuscription() {
-    this.http.get(`${this.apiUrl}/activatesub`, { headers: this.headers }).subscribe((res) => {
-    })
+  constructor() {
+    this.fetchSubscriptionStatus(); // Fetch subscription status on service initialization
+    console.log(this.activeSubscription())
   }
 
+  fetchSubscriptionStatus() {
+    this.http.get<ValidateSub>(`${this.apiUrlUser}/validatesub`, { headers: this.headers })
+      .subscribe({
+        next: (res) => this.activeSubscription.set(res),
+        error: (error) => {
+          console.log(error)
+          if(error.status == 401) {
+            localStorage.removeItem('token');
+          }
+        } // Handle error case
+      });
+  }
+
+  addPaymentMethod(body: any) {
+    return this.http.post(`${this.apiUrl}/addpm`, body, { headers: this.headers }).pipe(
+      switchMap((response: any) => {
+        if (response.success) {  // Assuming 'success' flag in the response
+          return this.activateSubscription();
+        } else {
+          throw new Error("Payment method addition failed");
+        }
+      }),
+      catchError((error) => {
+        console.error("Payment Error:", error);
+        return throwError(() => error);
+      })
+    );
+  }
+  
+  activateSubscription() {
+    return this.http.get(`${this.apiUrlUser}/activatesub`, { headers: this.headers });
+  }
+  
   deactivateSuscription() {
-    this.http.get(`${this.apiUrl}/cancelsub`, { headers: this.headers }).subscribe((res) => {
+    this.http.get(`${this.apiUrlUser}/cancelsub`, { headers: this.headers }).subscribe((res) => {
     })
   }
 }

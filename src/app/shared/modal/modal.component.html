@@ -110,6 +110,7 @@
                             </div>
                             <div>
                                 <button [disabled]="regEmailInput.invalid || regPasswordInput.invalid || regNameInput.invalid"
+                                (click)="register()"
                                     class="w-full text-white font-semibold text-sm px-4 py-2 rounded-full bg-[#00aff0] hover:bg-[#0091ea] cursor-pointer">
                                     REGISTRARSE
                                 </button>

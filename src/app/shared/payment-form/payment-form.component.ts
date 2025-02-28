@@ -1,13 +1,17 @@
 import { Component, inject, signal } from '@angular/core';
-import { FormControl, FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { AbstractControl, FormControl, FormGroup, FormsModule, ReactiveFormsModule, ValidationErrors, Validators } from '@angular/forms';
 import { ModalService } from '../../services/modal.service';
 import { CustomSelectComponent } from "../custom-select/custom-select.component";
 import { SuscriptionService } from '../../services/suscription.service';
+import { CommonModule } from '@angular/common';
+import { NgxMaskDirective, NgxMaskPipe, provideNgxMask } from 'ngx-mask';
+import cardValidator from 'card-validator';
+
 
 @Component({
   standalone: true,
   selector: 'app-payment-form',
-  imports: [ReactiveFormsModule, FormsModule, CustomSelectComponent],
+  imports: [ReactiveFormsModule, FormsModule, CustomSelectComponent, CommonModule, NgxMaskDirective],
   templateUrl: './payment-form.component.html',
   styleUrl: './payment-form.component.css'
 })
@@ -22,16 +26,23 @@ export class PaymentFormComponent {
   isFocused = false;
   userInput = '';
 
+  cardMask: string = '0000 0000 0000 0000'; 
+  cvcMask: string = '000'
+
   cardIcons = [
-    'assets/svg/visaIcon.png',
-    'assets/svg/mastercardIcon.png',
-    'assets/svg/maestroIcon.png',
-    'assets/svg/dinnersIcon.png',
-    'assets/svg/discoverIcon.png',
-    'assets/svg/jcbIcon.png',
+    '/assets/visaIcon.png',
+    '/assets/mastercardIcon.png',
+    '/assets/maestroIcon.png',
+    '/assets/dinnersIcon.png',
+    '/assets/discoverIcon.png',
+    '/assets/jcbIcon.png',
   ]
 
   countries = [
+    {
+      name: "CO",
+      flag: "/assets/svg/co.svg"
+    },
     {
       name: "AD",
       flag: "/assets/svg/ad.svg"
@@ -223,10 +234,6 @@ export class PaymentFormComponent {
     {
       name: "CN",
       flag: "/assets/svg/cn.svg"
-    },
-    {
-      name: "CO",
-      flag: "/assets/svg/co.svg"
     },
     {
       name: "CR",
@@ -1034,34 +1041,139 @@ export class PaymentFormComponent {
     }
 ]
 
+expErr = signal<boolean>(false);
+
 formGroup = new FormGroup({
   country: new FormControl(''),
   flag: new FormControl(''),
 });
 
-countryFormControl = this.formGroup.controls.country.value || "Selecciona un país";
+
+paymentGroup = new FormGroup({
+  country: new FormControl('', Validators.required),
+  state: new FormControl('',  [
+    Validators.required,              
+    Validators.minLength(2),               
+    Validators.maxLength(50),          
+    Validators.pattern('^[a-zA-ZÀ-ÿ\\s]+$') // Only letters and spaces
+  ]),
+  address: new FormControl('', [
+    Validators.required,                    
+    Validators.minLength(5),                
+    Validators.maxLength(100),              
+    Validators.pattern('^[a-zA-Z0-9.,\\s-]+$'),
+  ]),
+  city: new FormControl('', [
+    Validators.required,                    
+    Validators.minLength(2),                
+    Validators.maxLength(50),               
+    Validators.pattern('^[a-zA-ZÀ-ÿ\\s-]+$') 
+  ]),
+  zip: new FormControl('', [
+    Validators.required,
+    Validators.minLength(3),
+    Validators.maxLength(10),
+    Validators.pattern('^[a-zA-Z0-9\\s-]+$')
+  ]),
+  email: new FormControl('', [Validators.required, Validators.email]),
+  name: new FormControl('', [
+    Validators.required,
+    Validators.minLength(2),
+    Validators.maxLength(50),
+    Validators.pattern('^[a-zA-ZÀ-ÿ\\s]+$') // Only letters and spaces
+  ]),
+  idNumber: new FormControl('', [
+    Validators.required,
+    Validators.minLength(5),
+    Validators.maxLength(20),
+    Validators.pattern('^[a-zA-Z0-9]+$') // Alphanumeric (letters + numbers)
+  ]),
+  cNumber: new FormControl('', [
+    Validators.required,
+    Validators.minLength(13),
+    Validators.maxLength(19),
+    Validators.pattern('^[0-9 ]+$') // Only numbers and spaces
+  ]),
+  exp: new FormControl('', [Validators.required]),
+  cvv: new FormControl('', [
+    Validators.required,
+    Validators.minLength(3),
+    Validators.maxLength(4),
+    Validators.pattern('^[0-9]+$') // Only numbers (3 or 4 digits)
+  ]),
+});
+
+
+
+
+countryFormControl = this.formGroup.controls.country.value || "CO";
 flagFormControl = this.formGroup.controls.flag.value || "   ";
 
-  subscribe() {
-     this.paymentLoading.set(true);
-     setTimeout(() => {
-      this.paymentLoading.set(false);
-      this.paymentResult.set(true);
-      if(this.errorSubmited()) {
-        setTimeout(() => {
-          this.suscriptionService.activateSuscription();
-          setTimeout(() => {
-            this.modalService.closeAll();
-          })
-        }, 4000)
-      }
-     }, 4000);
-  }
+isSubmitting = signal<boolean>(false); // Prevent multiple submissions
 
-  tryAgain() {
-    this.errorSubmited.set(true);
-    this.subscribe();
+subscribe() {
+  if (this.isSubmitting() == true) return; // Prevent multiple clicks
+
+  this.isSubmitting.set(true);
+  this.paymentLoading.set(true);
+  this.paymentGroup.patchValue({country: this.countryFormControl})
+  setTimeout(() => {
+    this.paymentLoading.set(false);
+    this.paymentResult.set(true);
+    console.log(this.paymentGroup.value);
+    console.log(this.errorSubmited())
+    if (this.errorSubmited() == true) {
+      this.suscriptionService.addPaymentMethod(this.paymentGroup.value).subscribe(
+        {
+          next: ((res) => {
+            console.log(res)
+            this.modalService.closeAll();
+            this.isSubmitting.set(false); // Reset submission flag
+            window.location.reload()
+          }),
+          error: ((error) => {
+            console.log(error)
+          })
+        }
+      )
+    }
+  }, 4000);
+}
+
+tryAgain() {
+  this.isSubmitting.set(false);
+  this.errorSubmited.set(true);
+  this.subscribe();
+}
+
+onCardNumberInput(event: any) {
+  const value = event.target.value.replace(/\s+/g, ''); // Remove spaces
+  if (/^3[47]/.test(value)) {
+    this.cvcMask = '0000';
+    this.cardMask = '0000 000000 00000'; // Amex
+  } else if (/^3(0[0-5]|[68])/.test(value)) {
+    this.cardMask = '0000 000000 0000'; // Diners Club
+  } else {
+    this.cardMask = '0000 0000 0000 0000'; // Default for Visa, Mastercard, etc.
   }
+}
+
+onCardExpInput(event: any) {
+  if(event.target.value.toString().length === 4) {
+    this.expErr.set(false);
+    const currentDate = new Date().toUTCString();
+    const month = event.target.value.split('/')[0];
+    const year = event.target.value.split('/')[1];
+    const expDate = new Date(`${month}/01/${year}`).toUTCString();
+    if(expDate <= currentDate) {
+      this.expErr.set(true);
+    } 
+    if(Number(month) > 12 ) {
+      this.expErr.set(true)
+    }
+  }
+}
+
 }
 /* 
 setTimeout(() => {

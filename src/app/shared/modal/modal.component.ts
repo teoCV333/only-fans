@@ -45,7 +45,23 @@ export class ModalComponent {
     this.authService.login({ email: this.email, password: this.password }).subscribe({
       next: (response) => {
         localStorage.setItem('token', response.token);
-        this.modalService.login();
+        window.location.reload()
+      },
+      error: (error) => {
+        this.loginError.set(true);
+        this.errorMessage = error.error.message;
+        this.modalService.toggleResponseModal();
+        setTimeout(() => {
+          this.modalService.toggleResponseModal();
+        }, 3000);
+      }
+    });
+  }
+
+  register() {
+    this.authService.register({name: this.name, email: this.email, password: this.password }).subscribe({
+      next: (response) => {
+        this.loginFormActive.set(true)
       },
       error: (error) => {
         this.loginError.set(true);

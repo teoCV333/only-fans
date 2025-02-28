@@ -19,7 +19,6 @@ export default class AppComponent implements OnInit {
   suscriptionService = inject(SuscriptionService);
 
   title = 'only-f';
-  suscriptionActive = this.suscriptionService.activeSubscription();
   activeSection = signal<number>(1);
   initialLoading = signal<boolean>(true);
   styles = signal<any>({});
@@ -36,7 +35,7 @@ export default class AppComponent implements OnInit {
   ];
 
   getBackgroundStyle(item: string) {
-    return this.suscriptionActive.activeSub ? {
+    return this.suscriptionService.activeSubscription()?.activeSub ? {
       'height': '100vh',
       'background-image': `url(${item})`,
       'background-size': `cover`,
@@ -48,7 +47,7 @@ export default class AppComponent implements OnInit {
   }
 
   getBackgroundMediaStyle(item: string) {
-    return this.suscriptionActive.activeSub ? {
+    return this.suscriptionService.activeSubscription()?.activeSub ? {
       'height': '100%',
     } : {
       'background-image': `url(/assets/lockedbg.png)`,
@@ -102,7 +101,13 @@ export default class AppComponent implements OnInit {
   ]
 
   ngOnInit(): void {
-    console.log(this.suscriptionActive)
+    const checkSubscription = setInterval(() => {
+      if (this.suscriptionService.activeSubscription() !== null) {
+        clearInterval(checkSubscription); // Stop checking once we have data
+        console.log('Subscription status:', this.suscriptionService.activeSubscription()?.activeSub);
+        this.initialLoading.set(false); // Stop loading once data is ready
+      }
+    }, 500);
     setTimeout(() => {
       this.initialLoading.set(false);
     }, 7000)
@@ -131,10 +136,10 @@ export default class AppComponent implements OnInit {
 
   subscribe() {
     console.log(this.modalService.logged())
-    console.log(this.suscriptionActive.activeSub)
+    console.log(this.suscriptionService.activeSubscription())
     if(this.modalService.logged() === false) {
       this.modalService.toggleModal()
-    } else if(this.modalService.logged() === true && this.suscriptionActive.activeSub === false) {
+    } else if(this.modalService.logged() === true && this.suscriptionService.activeSubscription()?.activeSub === false) {
       this.modalService.toggleAddCardModal();
     }
   }

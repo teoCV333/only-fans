@@ -89,7 +89,7 @@
                 exclusive page 💗 : {{"@abbybunni"}}
             </p> -->
         </div>
-        <div class="bg-white p-4 shadow mt-3" *ngIf="!suscriptionActive.activeSub">
+        <div class="bg-white p-4 shadow mt-3" *ngIf="!this.suscriptionService.activeSubscription()?.activeSub">
             <h2 class="text-[#8a96a3] font-semibold mb-2">
                 SUSCRIPCIÓN
             </h2>
@@ -118,8 +118,8 @@
                 <div
                 [ngStyle]="getBackgroundStyle(item)"
                 class="flex relative md:px-25 py-5 rounded-sm my-2 items-center justify-center lg:p-33 lg:w-1/2 lg:mb-0">
-                <i class="fa fa-lock text-[4rem] text-[#dbdfe3] p-15" *ngIf="!suscriptionActive.activeSub"></i>
-                <div class="absolute mx-4 px-4 bottom-1 py-1 border-1 border-[#8a96a340] rounded-md" *ngIf="!suscriptionActive.activeSub">
+                <i class="fa fa-lock text-[4rem] text-[#dbdfe3] p-15" *ngIf="!this.suscriptionService.activeSubscription()?.activeSub"></i>
+                <div class="absolute mx-4 px-4 bottom-1 py-1 border-1 border-[#8a96a340] rounded-md" *ngIf="!this.suscriptionService.activeSubscription()?.activeSub">
                     <div class="inline-flex space-x-2 mb-2 text-[#8a96a3]">
                         <li>
                             <a class="p-1 space-x-1 "> <i class="fa fa-table-list"></i> <small>724 -</small></a>
@@ -147,12 +147,12 @@
                 [ngStyle]="getBackgroundMediaStyle(item)"
                 class="flex relative py-2 my-1 items-center justify-center bg-cover md:px-25 lg:px-33 lg:px-12">
                 <div class="h-fit">
-                <video class="rounded-md" *ngIf="this.suscriptionActive.activeSub" autoplay loop muted playsinline>
+                <video class="rounded-md" *ngIf="this.suscriptionService.activeSubscription()?.activeSub" autoplay loop muted playsinline>
                     <source [src]="item" type="video/mp4">
                 </video>
                 </div>
-                <i class="fa fa-lock text-[4rem] text-[#dbdfe3] p-15" *ngIf="!this.suscriptionActive.activeSub"></i>
-                <div class="absolute mx-4 px-4 bottom-1 py-1 border-1 border-[#8a96a340] rounded-md" *ngIf="!this.suscriptionActive.activeSub">
+                <i class="fa fa-lock text-[4rem] text-[#dbdfe3] p-15" *ngIf="!this.suscriptionService.activeSubscription()?.activeSub"></i>
+                <div class="absolute mx-4 px-4 bottom-1 py-1 border-1 border-[#8a96a340] rounded-md" *ngIf="!this.suscriptionService.activeSubscription()?.activeSub">
                     <div class="inline-flex space-x-2 mb-2 text-[#8a96a3]">
                         <li>
                             <a class="p-1 space-x-1 "> <i class="fa fa-table-list"></i> <small>724 -</small></a>
@@ -181,11 +181,11 @@
             <h2 class="text-[#8a96a3] font-bold mb-2 md">
                 SUSCRIPCIÓN
             </h2>
-            <button (click)="subscribe()" *ngIf="!suscriptionActive.activeSub"
+            <button (click)="subscribe()" *ngIf="!this.suscriptionService.activeSubscription()?.activeSub"
                 class="flex justify-between w-full text-white font-semibold text-sm px-4 py-2 rounded-full mb-2 bg-[#00aff0] hover:bg-[#0091ea] cursor-pointer transition duration-300 ease-in-out">
                 <span>SUSCRÍBETE</span> <span>GRATIS</span>
             </button>
-            <button *ngIf="suscriptionActive.activeSub"
+            <button *ngIf="this.suscriptionService.activeSubscription()?.activeSub"
                 class="flex justify-center w-full text-white font-semibold text-sm px-4 py-2 rounded-full mb-2 bg-[#00aff0] hover:bg-[#0091ea] cursor-pointer transition duration-300 ease-in-out">
                 <span class="text-md" disabled>Ya estas suscrito a esta modelo</span>
             </button>
@@ -203,5 +203,5 @@
         </div>
     </div>
 </div>}
-<app-add-card-modal *ngIf="modalService.showAddCardModal() && suscriptionActive.activeSub == false"/>
+<app-add-card-modal *ngIf="modalService.showAddCardModal() && this.suscriptionService.activeSubscription()?.activeSub == false"/>
 <app-modal  *ngIf="!modalService.logged() && modalService.showModal()" />

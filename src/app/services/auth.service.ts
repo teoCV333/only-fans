@@ -1,13 +1,13 @@
 import { Injectable, inject } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { map, Observable } from 'rxjs';
 import { ModalService } from './modal.service';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AuthService {
-  private apiUrl = 'http://localhost:3000/auth'; // Your Express API URL
+  private apiUrl = 'http://localhost:3000/api/auth'; // Your Express API URL
   private http = inject(HttpClient); // Use inject() instead of constructor
 
   // Register User
@@ -23,6 +23,7 @@ export class AuthService {
   // Logout User
   logout() {
     localStorage.removeItem('token');
+    window.location.reload();
   }
 
   // Check if User is Logged In

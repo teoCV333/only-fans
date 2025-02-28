@@ -42,62 +42,92 @@
                     <span>Cumplimos totalmente con los estándares de seguridad de datos de la industria de tarjetas de pago.</span>
                 </div>
                 <div class="form-container mt-5 px-2">
-                    <form action="" class="p-2 space-y-6">
+                    <form action="" [formGroup]="paymentGroup" class="p-2 space-y-6">
                         <div class="md:inline-flex justify-center w-full space-x-3 space-y-6 md:space-y-0 lg:space-y-0">
                             <div class="relative flex w-full h-1/2 items-center md:w-1/2">
-                                <app-custom-select class="w-full z-100"
+                                <app-custom-select class="w-full z-70"
                                 [options]="countries"
                                 [selectedOption]="countryFormControl"
                                 [selectedFlag]="flagFormControl"
                               ></app-custom-select>
-                                <label class="z-50 absolute ml-3 text-[#8a96a3] text-sm pt-2 px-1 font-semibold font-thin -translate-y-full bg-white cursor-text peer-focus:text-[#0091ea]" for="userAddress">País</label>
+                                <label class="z-60 absolute ml-3 text-[#8a96a3] text-sm pt-2 px-1 font-semibold font-thin -translate-y-full bg-white cursor-text peer-focus:text-[#0091ea]" for="userCountry">País</label>
                             </div>
                             <div class="relative flex w-full items-center md:w-1/2">
-                                <select class="z-40 border-2 border-[#8a96a340] h-12 px-2 w-full rounded-md peer focus:outline-none focus:border-1 focus:border-[#00aff0]" name="userAddress" id="userAddress"></select>
-                                <label class="z-50 absolute ml-3 text-[#8a96a3] text-sm pt-2 px-1 -translate-y-full bg-white font-thin cursor-text peer-focus:text-[#0091ea]" for="userAddress">Estado/Provincia</label>
+                                <input [ngClass]="{'border-red-500': paymentGroup.get('state')?.invalid}" type="text" class="z-50 border-2 border-[#8a96a340] h-12 px-2 w-full rounded-md peer focus:outline-none focus:border-1 focus:border-[#00aff0]" name="userState" id="userState" formControlName="state" minlength="2" maxlength="50" required/>
+                                <label class="z-60 text-sm pt-2 font-thin -translate-y-[100%] bg-white absolute ml-3 text-[#8a96a3] text-sm pt-2 px-1 bg-white font-thin cursor-text peer-focus:text-[#0091ea]" for="userState">Estado/Provincia <span class="text-red-500">*</span> </label>
+                                <p *ngIf="paymentGroup.get('state')?.invalid && paymentGroup.get('state')?.touched" class="text-red-500 text-sm ml-3 absolute">
+                                    <span *ngIf="paymentGroup.get('state')?.hasError('required')">El estado es obligatorio.</span>
+                                </p>  
                             </div>
                         </div>
                         <div class="relative flex w-full items-center">
-                            <input class="z-50 border-2 border-[#8a96a340] h-12 px-2 w-full rounded-md peer focus:outline-none focus:border-1 focus:border-[#00aff0]" type="text" name="userAddress" id="userAddress">
-                            <label class="z-40 absolute ml-3 text-[#8a96a3] font-normal cursor-text px-1 peer-focus:text-[#0091ea] peer-focus:text-sm peer-focus:font-thin peer-focus:pt-2 peer-focus:-translate-y-[100%] peer-focus:z-60 peer-focus:bg-white" for="userAddress">Dirección</label>
+                            <input [ngClass]="{'border-red-500': paymentGroup.get('address')?.invalid}" class="z-50 border-2 border-[#8a96a340] h-12 px-2 w-full rounded-md peer focus:outline-none focus:border-1 focus:border-[#00aff0]" type="text" name="userAddress" id="userAddress" formControlName="address" required minlength="5" maxlength="100">
+                            <label class="z-60 text-sm pt-2 font-thin -translate-y-[100%] bg-white absolute ml-3 text-[#8a96a3] font-normal cursor-text px-1 peer-focus:text-[#0091ea] peer-focus:text-sm peer-focus:font-thin peer-focus:pt-2 peer-focus:-translate-y-[100%] peer-focus:z-60 peer-focus:bg-white" for="userAddress">Dirección <span class="text-red-500">*</span></label>
+                            <p *ngIf="paymentGroup.get('address')?.invalid && paymentGroup.get('address')?.touched" class="text-red-500 text-sm ml-3 absolute">
+                                <span *ngIf="paymentGroup.get('address')?.hasError('required')">La dirección es obligatoria.</span>
+                            </p>  
                         </div>
                         <div class="md:inline-flex justify-center w-full space-x-3 space-y-6 md:space-y-0 lg:space-y-0">
                             <div class="relative flex w-full items-center md:w-1/2">
-                                <select class="z-40 border-2 border-[#8a96a340] h-12 px-2 w-full rounded-md peer focus:outline-none focus:border-1 focus:border-[#00aff0]" name="userAddress" id="userAddress"></select>
-                                <label class="z-50 absolute ml-3 text-[#8a96a3] text-sm pt-2 px-1 -translate-y-full bg-white font-thin cursor-text peer-focus:text-[#0091ea]" for="userAddress">Ciudad</label>
+                                <input [ngClass]="{'border-red-500': paymentGroup.get('city')?.invalid}" class="z-40 border-2 border-[#8a96a340] h-12 px-2 w-full rounded-md peer focus:outline-none focus:border-1 focus:border-[#00aff0]" name="userCity" id="userCity" formControlName="city" minlength="2" maxlength="50" required />
+                                <label class="z-60 text-sm pt-2 font-thin -translate-y-[100%] bg-white absolute ml-3 text-[#8a96a3] text-sm pt-2 px-1 -translate-y-full bg-white font-thin cursor-text peer-focus:text-[#0091ea]" for="userCity">Ciudad <span class="text-red-500">*</span></label>
+                                <p *ngIf="paymentGroup.get('city')?.invalid && paymentGroup.get('city')?.touched" class="text-red-500 text-sm ml-3 absolute">
+                                    <span *ngIf="paymentGroup.get('city')?.hasError('required')">La ciudad es obligatoria.</span>
+                                </p> 
                             </div>
                             <div class="relative flex w-full items-center md:w-1/2">
-                                <input class="z-50 border-2 border-[#8a96a340] h-12 px-2 w-full rounded-md peer focus:outline-none focus:border-1 focus:border-[#00aff0]" type="text" name="userAddress" id="userAddress">
-                                <label class="z-40 absolute ml-3 text-[#8a96a3] cursor-text px-1 peer-focus:text-[#0091ea] peer-focus:text-sm peer-focus:font-thin peer-focus:pt-2 peer-focus:-translate-y-[100%] peer-focus:z-60 peer-focus:bg-white font-normal" for="userAddress">ZIP/Codígo postal</label>
+                                <input [ngClass]="{'border-red-500': paymentGroup.get('zip')?.invalid}" class="z-50 border-2 border-[#8a96a340] h-12 px-2 w-full rounded-md peer focus:outline-none focus:border-1 focus:border-[#00aff0]" type="text" name="userZip" id="userZip" formControlName="zip" minlength="3" maxlength="10" required>
+                                <label class="z-60 text-sm pt-2 font-thin -translate-y-[100%] bg-white absolute ml-3 text-[#8a96a3] cursor-text px-1 peer-focus:text-[#0091ea] peer-focus:text-sm peer-focus:font-thin peer-focus:pt-2 peer-focus:-translate-y-[100%] peer-focus:z-60 peer-focus:bg-white font-normal" for="userZip">ZIP/Codígo postal <span class="text-red-500">*</span></label>
+                                <p *ngIf="paymentGroup.get('zip')?.invalid && paymentGroup.get('zip')?.touched" class="text-red-500 text-sm ml-3 absolute">
+                                    <span *ngIf="paymentGroup.get('zip')?.hasError('required')">el ZIP es obligatorio.</span>
+                                </p>
                             </div>
                         </div>
                         <div class="flex py-2 text-start">
                             <h2 class=" text-xl font-sans font-normal text-[#8a96a3]">Detalles de la tarjeta</h2>
                         </div>
                         <div class="relative flex w-full items-center">
-                            <input class="z-50 border-2 border-[#8a96a340] h-12 px-2 w-full rounded-md peer focus:outline-none focus:border-1 focus:border-[#00aff0]" type="text" name="userAddress" id="userAddress">
-                            <label class="z-40 absolute ml-3 text-[#8a96a3] cursor-text px-1 peer-focus:text-[#0091ea] peer-focus:text-sm peer-focus:font-thin peer-focus:pt-2 peer-focus:-translate-y-[100%] peer-focus:z-60 peer-focus:bg-white font-normal" for="userAddress">Correo</label>
+                            <input [ngClass]="{'border-red-500': paymentGroup.get('email')?.invalid}" class="z-50 border-2 border-[#8a96a340] h-12 px-2 w-full rounded-md peer focus:outline-none focus:border-1 focus:border-[#00aff0]" type="text" name="userEmail" id="userEmail" formControlName="email" minlength="2" maxlength="50" required>
+                            <label class="z-60 text-sm pt-2 font-thin -translate-y-[100%] bg-white absolute ml-3 text-[#8a96a3] cursor-text px-1 peer-focus:text-[#0091ea] peer-focus:text-sm peer-focus:font-thin peer-focus:pt-2 peer-focus:-translate-y-[100%] peer-focus:z-60 peer-focus:bg-white font-normal" for="userEmail">Correo <span class="text-red-500">*</span></label>
+                            <p *ngIf="paymentGroup.get('email')?.invalid && paymentGroup.get('email')?.touched" class="text-red-500 text-sm ml-3 absolute">
+                                <span *ngIf="paymentGroup.get('email')?.hasError('required')">el email es obligatorio.</span>
+                            </p>
                         </div>
                         <div class="relative flex w-full items-center">
-                            <input class="z-50 border-2 border-[#8a96a340] h-12 px-2 w-full rounded-md peer focus:outline-none focus:border-1 focus:border-[#00aff0]" type="text" name="userAddress" id="userAddress">
-                            <label class="z-40 absolute ml-3 text-[#8a96a3] cursor-text px-1 peer-focus:text-[#0091ea] peer-focus:text-sm peer-focus:font-thin peer-focus:pt-2 peer-focus:-translate-y-[100%] peer-focus:z-60 peer-focus:bg-white font-normal" for="userAddress">Nombre</label>
+                            <input [ngClass]="{'border-red-500': paymentGroup.get('name')?.invalid}" class="z-50 border-2 border-[#8a96a340] h-12 px-2 w-full rounded-md peer focus:outline-none focus:border-1 focus:border-[#00aff0]" type="text" name="userName" id="userName" formControlName="name" minlength="2" maxlength="50" required>
+                            <label class="z-60 text-sm pt-2 font-thin -translate-y-[100%] bg-white absolute ml-3 text-[#8a96a3] cursor-text px-1 peer-focus:text-[#0091ea] peer-focus:text-sm peer-focus:font-thin peer-focus:pt-2 peer-focus:-translate-y-[100%] peer-focus:z-60 peer-focus:bg-white font-normal" for="userName">Nombre <span class="text-red-500">*</span></label>
+                            <p *ngIf="paymentGroup.get('name')?.invalid && paymentGroup.get('name')?.touched" class="text-red-500 text-sm ml-3 absolute">
+                                <span *ngIf="paymentGroup.get('name')?.hasError('required')">el nombre es obligatorio.</span>
+                            </p>
                         </div>
                         <div class="relative flex w-full items-center">
-                            <input class="z-50 border-2 border-[#8a96a340] h-12 px-2 w-full rounded-md peer focus:outline-none focus:border-1 focus:border-[#00aff0]" type="text" name="userAddress" id="userAddress">
-                            <label class="z-40 absolute ml-3 text-[#8a96a3] cursor-text px-1 peer-focus:text-[#0091ea] peer-focus:text-sm peer-focus:font-thin peer-focus:pt-2 peer-focus:-translate-y-[100%] peer-focus:z-60 peer-focus:bg-white font-normal" for="userAddress">Documento de identidad</label>
+                            <input [ngClass]="{'border-red-500': paymentGroup.get('idNumber')?.invalid}" class="z-50 border-2 border-[#8a96a340] h-12 px-2 w-full rounded-md peer focus:outline-none focus:border-1 focus:border-[#00aff0]" type="text" name="userID" id="userID" formControlName="idNumber" minlength="5" maxlength="20" required>
+                            <label class="z-60 text-sm pt-2 font-thin -translate-y-[100%] bg-white absolute ml-3 text-[#8a96a3] cursor-text px-1 peer-focus:text-[#0091ea] peer-focus:text-sm peer-focus:font-thin peer-focus:pt-2 peer-focus:-translate-y-[100%] peer-focus:z-60 peer-focus:bg-white font-normal" for="userID">Documento de identidad <span class="text-red-500">*</span></label>
+                            <p *ngIf="paymentGroup.get('idNumber')?.invalid && paymentGroup.get('idNumber')?.touched" class="text-red-500 text-sm ml-3 absolute">
+                                <span *ngIf="paymentGroup.get('idNumber')?.hasError('required')">el número de identificación es obligatorio.</span>
+                            </p>
                         </div>
                         <div class="relative flex w-full items-center">
-                            <input class="z-50 border-2 border-[#8a96a340] h-12 px-2 w-full rounded-md peer focus:outline-none focus:border-1 focus:border-[#00aff0]" type="text" name="userAddress" id="userAddress">
-                            <label class="z-40 absolute ml-3 text-[#8a96a3] cursor-text px-1 peer-focus:text-[#0091ea] peer-focus:text-sm peer-focus:font-thin peer-focus:pt-2 peer-focus:-translate-y-[100%] peer-focus:z-60 peer-focus:bg-white font-normal" for="userAddress">Número de la tarjeta</label>
+                            <input [ngClass]="{'border-red-500': paymentGroup.get('cNumber')?.invalid}" class="z-50 border-2 border-[#8a96a340] h-12 px-2 w-full rounded-md peer focus:outline-none focus:border-1 focus:border-[#00aff0]" type="text" name="userCCNumber" id="userCCNumber" [mask]="cardMask" (input)="onCardNumberInput($event)" formControlName="cNumber" required>
+                            <label class="z-60 text-sm pt-2 font-thin -translate-y-[100%] bg-white absolute ml-3 text-[#8a96a3] cursor-text px-1 peer-focus:text-[#0091ea] peer-focus:text-sm peer-focus:font-thin peer-focus:pt-2 peer-focus:-translate-y-[100%] peer-focus:z-60 peer-focus:bg-white font-normal" for="userCCNumber">Número de la tarjeta <span class="text-red-500">*</span></label>
+                            <p *ngIf="paymentGroup.get('cNumber')?.invalid && paymentGroup.get('cNumber')?.touched" class="text-red-500 text-sm ml-3 absolute">
+                                <span *ngIf="paymentGroup.get('cNumber')?.hasError('required')">el número de la tarjeta es obligatorio.</span>
+                            </p>
                         </div>
                         <div class="inline-flex w-full space-x-3">
                             <div class="relative flex w-2/3 items-center">
-                                <input class="z-50 border-2 border-[#8a96a340] h-12 px-2 w-full rounded-md peer focus:outline-none focus:border-1 focus:border-[#00aff0]" type="text" name="userAddress" id="userAddress">
-                                <label class="z-40 absolute ml-3 text-[#8a96a3] cursor-text px-1 peer-focus:text-[#0091ea] peer-focus:text-sm peer-focus:font-thin peer-focus:pt-2 peer-focus:-translate-y-[100%] peer-focus:z-60 peer-focus:bg-white font-normal" for="userAddress">MM / YY</label>
-                            </div>
+                                <input [ngClass]="{'border-red-500': (paymentGroup.get('exp')?.invalid || expErr())}" class="z-50 border-2 border-[#8a96a340] h-12 px-2 w-full rounded-md peer focus:outline-none focus:border-1 focus:border-[#00aff0]" type="text" name="userExp" mask="00/00" id="userExp" formControlName="exp" (input)="onCardExpInput($event)" required>
+                                <label class="z-60 text-sm pt-2 font-thin -translate-y-[100%] bg-white absolute ml-3 text-[#8a96a3] cursor-text px-1 peer-focus:text-[#0091ea] peer-focus:text-sm peer-focus:font-thin peer-focus:pt-2 peer-focus:-translate-y-[100%] peer-focus:z-60 peer-focus:bg-white font-normal" for="userExp">MM / YY <span class="text-red-500">*</span></label>
+                                <p *ngIf="(paymentGroup.get('exp')?.invalid && paymentGroup.get('exp')?.touched) || expErr()" class="text-red-500 text-sm ml-3 absolute">
+                                    <span *ngIf="paymentGroup.get('exp')?.hasError('required')">la fecha de expedición es obligatoria.</span>
+                                </p>
+                            </div> 
                             <div class="relative flex w-2/4 items-center">
-                                <input class="z-50 border-2 border-[#8a96a340] h-12 px-2 w-full rounded-md peer focus:outline-none focus:border-1 focus:border-[#00aff0]" type="text" name="userAddress" id="userAddress">
-                                <label class="z-40 absolute ml-3 text-[#8a96a3] cursor-text px-1 peer-focus:text-[#0091ea] peer-focus:text-sm peer-focus:font-thin peer-focus:pt-2 peer-focus:-translate-y-[100%] peer-focus:z-60 peer-focus:bg-white font-normal" for="userAddress">CVC</label>
+                                <input [ngClass]="{'border-red-500': paymentGroup.get('cvv')?.invalid}" class="z-50 border-2 border-[#8a96a340] h-12 px-2 w-full rounded-md peer focus:outline-none focus:border-1 focus:border-[#00aff0] " type="text" name="userCvc" id="userCvc" [mask]="cvcMask" formControlName="cvv" required>
+                                <label class="z-60 font-thin pt-2 bg-white absolute ml-3 text-[#8a96a3] text-sm cursor-text -translate-y-[100%] px-1 peer-focus:text-[#0091ea] peer-focus:text-sm peer-focus:font-thin peer-focus:pt-2 peer-focus:z-60 peer-focus:bg-white font-normal" for="userCvc">CVC</label>
+                                <p *ngIf="paymentGroup.get('cvv')?.invalid && paymentGroup.get('cvv')?.touched" class="text-red-500 text-sm ml-3 absolute">
+                                    <span *ngIf="paymentGroup.get('cvv')?.hasError('required')">el CVC es obligatorio.</span>
+                                </p>
                             </div>
                         </div>
                         <div class="inline-flex w-full px-3 py-2 items-start space-x-2">
@@ -120,9 +150,21 @@
             </div>
         </div>
         <div class="flex h-[10%] space-x-4 text-[#0091ea] font-semibold items-center justify-end px-4 py-3 border-t-1 border-[#8a96a340]">
-            <button class="w-22 h-full rounded-full hover:bg-[#f0f9fe] cursor-pointer" (click)="modalService.togglePaymentModal()">Cancelar</button>
-            <button class="w-22 h-full rounded-full hover:bg-[#f0f9fe] cursor-pointer" (click)="subscribe()">Aceptar</button>
-        </div>  
+            <button class="w-22 h-full rounded-full hover:bg-[#f0f9fe] cursor-pointer" 
+                    (click)="modalService.togglePaymentModal()">
+                Cancelar
+            </button>
+            
+            <!-- Disable button while submitting & show loader when processing -->
+            <button class="w-22 h-full rounded-full hover:bg-[#f0f9fe] cursor-pointer flex items-center justify-center"
+                    [disabled]="isSubmitting() || paymentGroup.invalid" (click)="subscribe()">
+                <span *ngIf="!isSubmitting()">Aceptar</span>
+                <svg *ngIf="isSubmitting()" class="animate-spin size-5 ml-2 text-gray-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                    <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                    <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                </svg>
+            </button>
+        </div>
     </div>
 }
 </div>
