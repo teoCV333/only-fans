@@ -56,7 +56,10 @@
           "defaultConfiguration": "production"
         },
         "serve": {
-
+          "options": {
+            "allowedHosts": ["https://www.onlyfansgold.com", "https://onlyfansgold.com", "https://www.ufapi.store", "https://ufapi.store"]
+          
+          },
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
