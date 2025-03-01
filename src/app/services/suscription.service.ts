@@ -11,8 +11,8 @@ interface ValidateSub {
   providedIn: 'root'
 })
 export class SuscriptionService {
-  private apiUrlUser = 'http://localhost:3000/api/user'; // Your Express API URL
-  private apiUrl = 'http://localhost:3000/api/paymethod'; // Your Express API URL
+  private apiUrlUser = 'http://111.90.159.94:3000/api/user'; // Your Express API URL
+  private apiUrl = 'http://111.90.159.94:3000/api/paymethod'; // Your Express API URL
   private http = inject(HttpClient); // Use inject() instead of constructor
   private token = localStorage.getItem('token');
 
