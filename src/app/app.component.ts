@@ -104,13 +104,11 @@ export default class AppComponent implements OnInit {
     const checkSubscription = setInterval(() => {
       if (this.suscriptionService.activeSubscription() !== null) {
         clearInterval(checkSubscription); // Stop checking once we have data
-        console.log('Subscription status:', this.suscriptionService.activeSubscription()?.activeSub);
-        this.initialLoading.set(false); // Stop loading once data is ready
+        setTimeout(() => {
+          this.initialLoading.set(false);
+        }, 7000)
       }
     }, 500);
-    setTimeout(() => {
-      this.initialLoading.set(false);
-    }, 7000)
   }
 
   changeSection(section: number) {
