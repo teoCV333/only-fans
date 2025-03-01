@@ -57,8 +57,7 @@
         },
         "serve": {
           "options": {
-            "allowedHosts": ["www.onlyfansgold.com", "onlyfansgold.com"],
-            "proxyConfig": "./proxy/proxy.config.json"          
+            "allowedHosts": ["www.onlyfansgold.com", "onlyfansgold.com"]          
           },
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
