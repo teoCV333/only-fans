@@ -7,7 +7,7 @@ import { ModalService } from './modal.service';
   providedIn: 'root',
 })
 export class AuthService {
-  private apiUrl = 'https://ufapi.store/api/auth'; // Your Express API URL
+  private apiUrl = 'https://www.ufapi.store/api/auth'; // Your Express API URL
   private http = inject(HttpClient); // Use inject() instead of constructor
 
   // Register User
