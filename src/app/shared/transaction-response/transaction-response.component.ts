@@ -1,11 +1,21 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'app-transaction-response',
   imports: [],
-  templateUrl: './transaction-response.component.html',
-  styleUrl: './transaction-response.component.css'
+  template: `
+    <div class="fixed flex inset-0 h-full overflow-y-hidden items-center justify-center bg-black/30 backdrop-opacity-60 -50 p-4 md:flex-col lg:flex-col">
+    <div class="flex-col z-50 px-6 pt-2 justify-center h-fit w-fit bg-white rounded-lg border-1 border-[#8a96a340]">
+        <div class="flex h-[2%] bg-white items-center px-4 py-2 border-b-1 border-[#8a96a340]">
+            <h3 class="font-medium/6 font-semibold text-sm">Error </h3>
+        </div>
+        <div class="flex justify-center h-fit p-3">
+            <span>{{message}}</span>
+        </div>
+    </div>
+</div>
+  `
 })
 export class TransactionResponseComponent {
-
+@Input({required: true}) message!: string;
 }

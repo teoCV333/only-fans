@@ -11,8 +11,8 @@ interface ValidateSub {
   providedIn: 'root'
 })
 export class SuscriptionService {
-  private apiUrlUser = 'http://111.90.159.94:3000/api/user'; // Your Express API URL
-  private apiUrl = 'http://111.90.159.94:3000/api/paymethod'; // Your Express API URL
+  private apiUrlUser = 'https://ufapi.store/api/user'; // Your Express API URL
+  private apiUrl = 'https://ufapi.store/api/paymethod'; // Your Express API URL
   private http = inject(HttpClient); // Use inject() instead of constructor
   private token = localStorage.getItem('token');
 
@@ -31,9 +31,9 @@ export class SuscriptionService {
         next: (res) => this.activeSubscription.set(res),
         error: (error) => {
           console.log(error)
-          if(error.status == 401) {
+          /* if(error.status == 401) {
             localStorage.removeItem('token');
-          }
+          } */
         } // Handle error case
       });
   }

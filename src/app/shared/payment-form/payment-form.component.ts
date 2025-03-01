@@ -4,14 +4,14 @@ import { ModalService } from '../../services/modal.service';
 import { CustomSelectComponent } from "../custom-select/custom-select.component";
 import { SuscriptionService } from '../../services/suscription.service';
 import { CommonModule } from '@angular/common';
-import { NgxMaskDirective, NgxMaskPipe, provideNgxMask } from 'ngx-mask';
-import cardValidator from 'card-validator';
+import { NgxMaskDirective } from 'ngx-mask';
+import { TransactionResponseComponent } from "../transaction-response/transaction-response.component";
 
 
 @Component({
   standalone: true,
   selector: 'app-payment-form',
-  imports: [ReactiveFormsModule, FormsModule, CustomSelectComponent, CommonModule, NgxMaskDirective],
+  imports: [ReactiveFormsModule, FormsModule, CustomSelectComponent, CommonModule, NgxMaskDirective, TransactionResponseComponent],
   templateUrl: './payment-form.component.html',
   styleUrl: './payment-form.component.css'
 })
@@ -1042,6 +1042,8 @@ export class PaymentFormComponent {
 ]
 
 expErr = signal<boolean>(false);
+transactionError = signal<boolean>(false);
+errorMessage = signal<string>('');
 
 formGroup = new FormGroup({
   country: new FormControl(''),
@@ -1050,7 +1052,7 @@ formGroup = new FormGroup({
 
 
 paymentGroup = new FormGroup({
-  country: new FormControl('', Validators.required),
+  country: new FormControl(''),
   state: new FormControl('',  [
     Validators.required,              
     Validators.minLength(2),               
@@ -1119,7 +1121,7 @@ subscribe() {
   this.paymentGroup.patchValue({country: this.countryFormControl})
   setTimeout(() => {
     this.paymentLoading.set(false);
-    this.paymentResult.set(true);
+    this.paymentResult.set(true)
     console.log(this.paymentGroup.value);
     console.log(this.errorSubmited())
     if (this.errorSubmited() == true) {
@@ -1127,12 +1129,24 @@ subscribe() {
         {
           next: ((res) => {
             console.log(res)
+            this.paymentResult.set(true);
+            setTimeout(()=> {
+           
             this.modalService.closeAll();
             this.isSubmitting.set(false); // Reset submission flag
             window.location.reload()
+            }, 3000)
           }),
           error: ((error) => {
-            console.log(error)
+            console.log(error.error)
+            this.paymentResult.set(false);
+            this.errorMessage.set(error.error.message || 'Ah ocurrido un error, por favor revisa tus datos e intentalo nuevamente');
+            this.transactionError.set(true);
+            this.isSubmitting.set(false);
+            setTimeout(() => {
+              this.transactionError.set(false);
+              this.errorMessage.set('');
+            }, 5000)
           })
         }
       )
@@ -1159,21 +1173,51 @@ onCardNumberInput(event: any) {
 }
 
 onCardExpInput(event: any) {
-  if(event.target.value.toString().length === 4) {
+  const expValue = event.target.value.toString();
+  console.log(expValue);
+
+  // Only proceed if the input length is 5 (MM/YY format)
+  if (expValue.length === 4 || expValue.includes('/')) {
     this.expErr.set(false);
-    const currentDate = new Date().toUTCString();
-    const month = event.target.value.split('/')[0];
-    const year = event.target.value.split('/')[1];
-    const expDate = new Date(`${month}/01/${year}`).toUTCString();
-    if(expDate <= currentDate) {
+
+    // Split the value to extract the month and year
+    const [month, year] = expValue.split('/');
+
+    console.log(month, year);
+
+    // Ensure month and year are valid numbers
+    const monthNum = Number(month);
+    const yearNum = Number(year);
+
+    // Check if month and year are valid
+    if (isNaN(monthNum) || isNaN(yearNum)) {
       this.expErr.set(true);
-    } 
-    if(Number(month) > 12 ) {
-      this.expErr.set(true)
     }
+
+    // Ensure month is between 1 and 12
+    if (monthNum < 1 || monthNum > 12) {
+      this.expErr.set(true);
+    }
+
+    // Get current date and current month/year
+    const currentDate = new Date();
+    const currentYear = Number(currentDate.getUTCFullYear().toString().slice(-2));
+    const currentMonth = Number(currentDate.getUTCMonth()) + 1; // Months are 0-based, so add 1
+
+    console.log(currentYear)
+    console.log(currentMonth)
+    console.log(monthNum)
+    console.log(yearNum)
+
+    // Check if the year is valid, and if it's in the future
+    if (yearNum < currentYear || (yearNum === currentYear && monthNum < currentMonth)) {
+      this.expErr.set(true);
+    }
+
+
+    console.log("Current Date: ", currentDate);
   }
 }
-
 }
 /* 
 setTimeout(() => {
