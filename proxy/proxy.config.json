@@ -1,7 +1,7 @@
 {
     "/**": {
-        "target": "https://ufapi.com",
+        "target": "https://localhost:3000",
         "secure": true,
-        "changeOrigin": true
+        "changeOrigin": false
     }
 }
