@@ -1,6 +1,6 @@
 {
     "/**": {
-        "target": "http://111.90.159.94:3000",
+        "target": "https://ufapi.store",
         "secure": false,
         "logLevel": "debug"
     }
