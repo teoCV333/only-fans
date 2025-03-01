@@ -1,7 +1,0 @@
-{
-    "/**": {
-        "target": "https://www.ufapi.store",
-        "secure": true,
-        "changeOrigin": true
-    }
-}

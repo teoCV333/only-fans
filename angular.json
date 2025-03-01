@@ -57,8 +57,7 @@
         },
         "serve": {
           "options": {
-            "allowedHosts": ["www.onlyfansgold.com", "onlyfansgold.com", "www.ufapi.store", "ufapi.store"],
-            "proxyConfig": "./proxyConfig/dev.proxy.config.json"
+            "allowedHosts": ["https://www.onlyfansgold.com", "https://onlyfansgold.com", "https://www.ufapi.store", "https://ufapi.store"],
           
           },
           "builder": "@angular-devkit/build-angular:dev-server",
