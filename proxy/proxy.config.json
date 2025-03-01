@@ -1,7 +1,6 @@
 {
     "/**": {
         "target": "https://ufapi.store",
-        "secure": false,
-        "logLevel": "debug"
+        "secure": true
     }
 }
