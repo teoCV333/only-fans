@@ -18,7 +18,7 @@ export default class AppComponent implements OnInit {
   authService = inject(AuthService);
   suscriptionService = inject(SuscriptionService);
 
-  title = 'only-f';
+  title = 'OnlyFans';
   activeSection = signal<number>(1);
   initialLoading = signal<boolean>(true);
   styles = signal<any>({});
