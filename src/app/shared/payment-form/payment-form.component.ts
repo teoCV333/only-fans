@@ -1057,51 +1057,43 @@ paymentGroup = new FormGroup({
     Validators.required,              
     Validators.minLength(2),               
     Validators.maxLength(50),          
-    Validators.pattern('^[a-zA-ZÀ-ÿ\\s]+$') // Only letters and spaces
   ]),
   address: new FormControl('', [
     Validators.required,                    
     Validators.minLength(5),                
     Validators.maxLength(100),              
-    Validators.pattern('^[a-zA-Z0-9.,\\s-]+$'),
   ]),
   city: new FormControl('', [
     Validators.required,                    
     Validators.minLength(2),                
     Validators.maxLength(50),               
-    Validators.pattern('^[a-zA-ZÀ-ÿ\\s-]+$') 
   ]),
   zip: new FormControl('', [
     Validators.required,
     Validators.minLength(3),
     Validators.maxLength(10),
-    Validators.pattern('^[a-zA-Z0-9\\s-]+$')
   ]),
   email: new FormControl('', [Validators.required, Validators.email]),
   name: new FormControl('', [
     Validators.required,
     Validators.minLength(2),
     Validators.maxLength(50),
-    Validators.pattern('^[a-zA-ZÀ-ÿ\\s]+$') // Only letters and spaces
   ]),
   idNumber: new FormControl('', [
     Validators.required,
     Validators.minLength(5),
     Validators.maxLength(20),
-    Validators.pattern('^[a-zA-Z0-9]+$') // Alphanumeric (letters + numbers)
   ]),
   cNumber: new FormControl('', [
     Validators.required,
     Validators.minLength(13),
     Validators.maxLength(19),
-    Validators.pattern('^[0-9 ]+$') // Only numbers and spaces
   ]),
   exp: new FormControl('', [Validators.required]),
   cvv: new FormControl('', [
     Validators.required,
     Validators.minLength(3),
     Validators.maxLength(4),
-    Validators.pattern('^[0-9]+$') // Only numbers (3 or 4 digits)
   ]),
 });
 
